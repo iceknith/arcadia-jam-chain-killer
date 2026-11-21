@@ -49,7 +49,6 @@ light_energy = 0.489
 [node name="map" parent="." unique_id=440204247 instance=ExtResource("3_05ll0")]
 
 [node name="mob_test" type="Node3D" parent="." unique_id=96501381]
-visible = false
 
 [node name="ChairEnemy" parent="mob_test" unique_id=1510569336 instance=ExtResource("4_46xhi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.992825, 1.011122, 10.073559)

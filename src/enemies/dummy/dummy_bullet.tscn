@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b7f271fqcosno"]
 
 [ext_resource type="Script" uid="uid://dk657urseds7y" path="res://src/enemies/bullet.gd" id="1_n7xwk"]
+[ext_resource type="AudioStream" uid="uid://8nep3vg42c4e" path="res://assets/sound/processed/enemy_hit.mp3" id="2_15r33"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_xoxn7"]
 
@@ -15,12 +16,13 @@ radius = 0.3
 [sub_resource type="SphereShape3D" id="SphereShape3D_bgavf"]
 radius = 0.27
 
-[node name="DummyBullet" type="CharacterBody3D" unique_id=777227190 node_paths=PackedStringArray("contact_damage_area", "sprite")]
+[node name="DummyBullet" type="CharacterBody3D" unique_id=777227190 node_paths=PackedStringArray("contact_damage_area", "damage_sound_player", "sprite")]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_n7xwk")
 speed = 10.0
 contact_damage_area = NodePath("Area3D")
+damage_sound_player = NodePath("DamageStreamPlayer")
 MAX_HEALTH = 0.1
 sprite = NodePath("Sprite3D")
 DAMAGE_FLICKER_DURATION = 0.05
@@ -43,3 +45,7 @@ debug_color = Color(1, 0.60038817, 0.70000815, 0.42000002)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=430469397]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01550293, 0)
 shape = SubResource("SphereShape3D_bgavf")
+
+[node name="DamageStreamPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1636000578]
+stream = ExtResource("2_15r33")
+volume_db = 6.0
