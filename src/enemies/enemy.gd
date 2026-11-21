@@ -4,7 +4,7 @@ extends CharacterBody3D
 @export var contact_damage_area:Area3D
 @export_group('Attack')
 @export var MAX_HEALTH:float = 10
-@export var STUN_TIME:float = 3
+@export var STUN_TIME:float = 1
 @export var CONTACT_DAMAGE:float = 10
 @export_group('Visuals')
 @export var sprite:Sprite3D
@@ -46,16 +46,19 @@ func damage_animation():
 
 func death_animation():
 	if sprite != null:
+		stun_timer = get_tree().create_timer(10000)
 		if damage_tween: damage_tween.kill()
 		damage_tween = create_tween()
 		damage_tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CIRC)
 		damage_tween.tween_property(sprite, 'modulate', DAMAGE_COLOR_1, DAMAGE_FLICKER_DURATION)
 		damage_tween.tween_property(sprite, 'modulate', Color.TRANSPARENT, DAMAGE_FLICKER_DURATION)
-		damage_tween.call_deferred('queue_free')
+		damage_tween.tween_callback(queue_free)
 	else:
 		queue_free()
 
 func grab():
+	if health <= 0: return
+	
 	if damage_tween: damage_tween.kill()
 	damage_tween = create_tween()
 	damage_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CIRC)

@@ -74,7 +74,6 @@ FOV_SPEED_MULT = 3.0
 [node name="PlayerUi" parent="CanvasLayer" unique_id=1803843459 instance=ExtResource("2_rxibo")]
 unique_name_in_owner = true
 mouse_filter = 2
-BAR_HEIGHT = 5.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1584897913]
 shape = SubResource("CapsuleShape3D_wu8kj")
