@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://bn0edosvjbxoc"]
+
+[ext_resource type="Script" uid="uid://bd1ktbdk7suqq" path="res://src/enemies/flyingEnemy.gd" id="1_au5t6"]
+[ext_resource type="Texture2D" uid="uid://bl0idrix3jsr1" path="res://assets/images/enemy/bat1.png" id="2_jpap0"]
+[ext_resource type="Texture2D" uid="uid://b3trqmhiehn8w" path="res://assets/images/enemy/bat2.png" id="3_3rkhm"]
+[ext_resource type="Texture2D" uid="uid://bnwsm0wnwc1jv" path="res://assets/images/enemy/bat3.png" id="4_022jg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_au5t6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jpap0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3rkhm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_022jg")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bwiv2"]
+size = Vector3(1.4855244, 1.2118347, 1.4942383)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pxtsr"]
+size = Vector3(1.0867157, 0.816864, 1.2402344)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wu8kj"]
+radius = 30.0
+
+[node name="BatEnemy" type="CharacterBody3D" unique_id=1510569336 node_paths=PackedStringArray("detection_range", "contact_damage_area", "sprite")]
+collision_layer = 4
+script = ExtResource("1_au5t6")
+detection_range = NodePath("DetectionRange")
+contact_damage_area = NodePath("Area3D")
+sprite = NodePath("Sprite3D")
+metadata/_custom_type_script = "uid://m42myfffckyh"
+
+[node name="Sprite3D" type="AnimatedSprite3D" parent="." unique_id=15555888]
+transform = Transform3D(1.9171748, 0, 0, 0, 1.9171748, 0, 0, 0, 1.9171748, 0, 0.9263303, 0)
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_au5t6")
+autoplay = "default"
+frame_progress = 0.75858164
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1088700233]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=618824604]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.017823696, 0.6741424, 0.0067870617)
+shape = SubResource("BoxShape3D_bwiv2")
+debug_color = Color(1, 0.60038817, 0.70000815, 0.42000002)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1989821314]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0178833, 0.66334534, 0.020507813)
+shape = SubResource("BoxShape3D_pxtsr")
+
+[node name="DetectionRange" type="Area3D" parent="." unique_id=1877718845]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionRange" unique_id=1140661989]
+shape = SubResource("SphereShape3D_wu8kj")
+debug_color = Color(0, 0.735357, 0, 0.42000002)

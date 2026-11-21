@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://7exa08nn64f3"]
+
+[ext_resource type="Script" uid="uid://m42myfffckyh" path="res://src/enemies/turretEnemy.gd" id="1_jd2j0"]
+[ext_resource type="Texture2D" uid="uid://c4nrpw2dquvs5" path="res://assets/images/enemy/eye.png" id="2_jd2j0"]
+[ext_resource type="PackedScene" uid="uid://b7f271fqcosno" path="res://src/enemies/dummy/dummy_bullet.tscn" id="2_qmeyt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bwiv2"]
+size = Vector3(1.4855244, 1.2118347, 1.4942383)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pxtsr"]
+size = Vector3(1.0867157, 0.816864, 1.2402344)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wu8kj"]
+radius = 30.0
+
+[node name="EyeEnemy" type="CharacterBody3D" unique_id=1510569336 node_paths=PackedStringArray("detection_range", "contact_damage_area", "sprite")]
+collision_layer = 4
+script = ExtResource("1_jd2j0")
+detection_range = NodePath("DetectionRange")
+bullet_scene = ExtResource("2_qmeyt")
+contact_damage_area = NodePath("Area3D")
+sprite = NodePath("Sprite3D")
+metadata/_custom_type_script = "uid://m42myfffckyh"
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1699949820]
+transform = Transform3D(1.9171748, 0, 0, 0, 1.9171748, 0, 0, 0, 1.9171748, 0, 0.67883885, 0)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("2_jd2j0")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1088700233]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=618824604]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.016618073, 0.6741424, 0.0067870617)
+shape = SubResource("BoxShape3D_bwiv2")
+debug_color = Color(1, 0.60038817, 0.70000815, 0.42000002)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1989821314]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.072151184, 0.66334534, 0.020507813)
+shape = SubResource("BoxShape3D_pxtsr")
+
+[node name="DetectionRange" type="Area3D" parent="." unique_id=1877718845]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionRange" unique_id=1140661989]
+shape = SubResource("SphereShape3D_wu8kj")
+debug_color = Color(0, 0.735357, 0, 0.42000002)

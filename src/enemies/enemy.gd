@@ -7,7 +7,7 @@ extends CharacterBody3D
 @export var STUN_TIME:float = 1
 @export var CONTACT_DAMAGE:float = 10
 @export_group('Visuals')
-@export var sprite:Sprite3D
+@export var sprite:SpriteBase3D
 @export var DAMAGE_COLOR_1:Color = Color(1,0.2,0.2)
 @export var DAMAGE_COLOR_2:Color = Color(0.5,0,0)
 @export var DAMAGE_FLICKER_COUNT:int = 2
