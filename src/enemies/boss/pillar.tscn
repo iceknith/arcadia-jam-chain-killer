@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bwo6bnj7gn5by"]
+
+[ext_resource type="Script" uid="uid://m42myfffckyh" path="res://src/enemies/turretEnemy.gd" id="1_v32a3"]
+[ext_resource type="PackedScene" uid="uid://b7f271fqcosno" path="res://src/enemies/dummy/dummy_bullet.tscn" id="2_wwqn6"]
+[ext_resource type="Texture2D" uid="uid://cgo6j1cn54txd" path="res://icon.svg" id="3_2sfpd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wu8kj"]
+radius = 0.74609375
+height = 3.699707
+
+[node name="Pillar" type="CharacterBody3D" unique_id=1510569336 node_paths=PackedStringArray("detection_range", "contact_damage_area", "sprite")]
+collision_layer = 4
+script = ExtResource("1_v32a3")
+detection_range = NodePath("")
+bullet_scene = ExtResource("2_wwqn6")
+contact_damage_area = NodePath("")
+MAX_HEALTH = 5.0
+sprite = NodePath("Sprite3D")
+DAMAGE_COLOR_2 = Color(0.6204995, 0, 0, 1)
+DAMAGE_FLICKER_COUNT = 1
+metadata/_custom_type_script = "uid://m42myfffckyh"
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=209947032]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 1.8886023, 0)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("3_2sfpd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1989821314]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9082556, 0)
+shape = SubResource("CapsuleShape3D_wu8kj")

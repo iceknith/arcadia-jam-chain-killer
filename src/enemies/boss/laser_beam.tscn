@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bojphk0vanr0x"]
+
+[ext_resource type="Script" uid="uid://br2dk164adduj" path="res://src/enemies/boss/laser_beam.gd" id="1_k0vup"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wu8kj"]
+height = 100.0
+radius = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wu8kj"]
+transparency = 1
+albedo_color = Color(1, 0.8586215, 0.8782205, 0.90000004)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wu8kj"]
+material = SubResource("StandardMaterial3D_wu8kj")
+top_radius = 1.0
+bottom_radius = 1.0
+height = 100.0
+
+[node name="LaserBeam" type="Area3D" unique_id=1978657225]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_k0vup")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2145242275]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, -50)
+shape = SubResource("CylinderShape3D_wu8kj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=989298102]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, -50)
+mesh = SubResource("CylinderMesh_wu8kj")

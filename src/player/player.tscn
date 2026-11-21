@@ -65,9 +65,12 @@ height = 0.1
 
 [node name="Player" type="CharacterBody3D" unique_id=256785396]
 collision_layer = 2
-collision_mask = 5
 script = ExtResource("1_4anbu")
 FOV_SPEED_MULT = 3.0
+GRAB_DISTANCE = 20.0
+SHOOT_MAX_DISTANCE = 35.0
+MAX_HEALTH = 20.0
+DAMAGE_KNOCKBACK = 20.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=477971830]
 
@@ -117,7 +120,7 @@ one_shot = true
 
 [node name="InvincibilityCooldown" type="Timer" parent="." unique_id=517960996]
 unique_name_in_owner = true
-wait_time = 2.0
+wait_time = 0.5
 one_shot = true
 
 [node name="CameraAnimator" type="AnimationPlayer" parent="." unique_id=603569710]

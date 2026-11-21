@@ -18,6 +18,7 @@ extends CharacterBody3D
 
 @export_group('Visuals')
 @export var MIN_FOV:float = 75
+@export var MAX_FOV:float = 130
 @export var FOV_SPEED_MULT:float = 0.5
 
 @export_group('Grab')
@@ -69,7 +70,7 @@ func _ready() -> void:
 	%ShootRayCast.target_position.z = -SHOOT_MAX_DISTANCE
 
 func _process(delta: float) -> void:
-	%Camera.fov = lerp(%Camera.fov, MIN_FOV + velocity.length() * FOV_SPEED_MULT, 5 * delta)
+	%Camera.fov = min(lerp(%Camera.fov, MIN_FOV + velocity.length() * FOV_SPEED_MULT, 5 * delta), MAX_FOV)
 	
 	attack_handler()
 
@@ -265,7 +266,7 @@ func movement_handler(delta:float) -> void :
 
 ### React FUNCS ###
 
-func damage(dealt_damage:float, source:Vector3) -> void:
+func damage(dealt_damage:float, source:Vector3 = Vector3.ZERO) -> void:
 	if !can_take_damage(): return
 	
 	health -= dealt_damage
@@ -278,8 +279,9 @@ func damage(dealt_damage:float, source:Vector3) -> void:
 		
 		%PlayerUi.on_damage(health / MAX_HEALTH)
 		%InvincibilityCooldown.start()
-		var knockback = global_position.direction_to(source) * DAMAGE_KNOCKBACK
-		knockback_speed -= Vector2(knockback.x, knockback.z)
+		if source != Vector3.ZERO:
+			var knockback = global_position.direction_to(source) * DAMAGE_KNOCKBACK
+			knockback_speed -= Vector2(knockback.x, knockback.z)
 
 func death_animation():
 	is_death_anim = true

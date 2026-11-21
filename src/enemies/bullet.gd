@@ -17,6 +17,5 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 
 func _on_bullet_contact(_body:Node) -> void:
-	print(_body.name)
 	await get_tree().process_frame
 	queue_free()

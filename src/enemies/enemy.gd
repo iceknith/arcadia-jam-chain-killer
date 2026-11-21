@@ -16,6 +16,8 @@ extends CharacterBody3D
 
 @onready var health = MAX_HEALTH
 
+signal die
+
 var stun_timer:SceneTreeTimer
 
 var damage_tween:Tween
@@ -45,6 +47,7 @@ func damage_animation():
 	damage_tween.tween_property(sprite, 'modulate', Color.WHITE, DAMAGE_FLICKER_DURATION)
 
 func death_animation():
+	die.emit()
 	if sprite != null:
 		stun_timer = get_tree().create_timer(10000)
 		if damage_tween: damage_tween.kill()
