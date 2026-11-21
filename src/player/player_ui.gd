@@ -52,6 +52,9 @@ func on_ungrab():
 		$AnimationPlayer.play("on_ungrab")
 		$AnimatedSprite2D.play("idle")
 
+func on_damage(new_helth_perc:float):
+	print('ANIMATION DAMAGE, DO THAT')
+
 func _draw() -> void:
 	# Draw 
 	var screen_center := size / 2.0

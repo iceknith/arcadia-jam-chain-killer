@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bkp1vkxo2div"]
+
+[ext_resource type="Script" uid="uid://cyly0r0q3b0st" path="res://src/enemies/enemy.gd" id="1_33yev"]
+[ext_resource type="Texture2D" uid="uid://cgo6j1cn54txd" path="res://icon.svg" id="2_bwiv2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bwiv2"]
+size = Vector3(1.1, 1.1, 1.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pxtsr"]
+
+[node name="DummyEnemy" type="CharacterBody3D" unique_id=1486919279 node_paths=PackedStringArray("contact_damage_area", "sprite")]
+collision_layer = 4
+script = ExtResource("1_33yev")
+contact_damage_area = NodePath("Area3D")
+MAX_HEALTH = 100000.0
+sprite = NodePath("Sprite3D")
+DAMAGE_COLOR_2 = Color(0.6204995, 0, 0, 1)
+DAMAGE_FLICKER_COUNT = 1
+metadata/_custom_type_script = "uid://cyly0r0q3b0st"
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=209947032]
+billboard = 2
+texture_filter = 0
+texture = ExtResource("2_bwiv2")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1088700233]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=618824604]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01550293, 0)
+shape = SubResource("BoxShape3D_bwiv2")
+debug_color = Color(1, 0.60038817, 0.70000815, 0.42000002)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1989821314]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01550293, 0)
+shape = SubResource("BoxShape3D_pxtsr")

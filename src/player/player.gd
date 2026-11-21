@@ -22,21 +22,30 @@ extends CharacterBody3D
 
 @export_group('Grab')
 @export var GRAB_DISTANCE:float = 30
-@export var GRAB_RELEASE_DISTANCE:float = 0.5
+@export var GRAB_RELEASE_DISTANCE:float = 2
 @export var GRAB_MAX_SPEED:float = 30
 @export var GRAB_ACCELERATION_DURATION:float = 2
 @export var GRAB_DAMAGE:float = 3
+@export var MOB_GRAB_JUMP_FORCE:float = 8
+@export var MOB_GRAB_KNOCKBACK:float = 15
 
 @export_group('Attack')
 @export var SHOOT_DAMAGE:float = 2
 @export var SHOOT_MAX_DISTANCE:float = 100
 @export var SHOOT_LAUNCH_SPEED_MULT:float = 2
+@export var SHOOT_RECOIL:float = 2
+
+@export_group('Combat')
+@export var MAX_HEALTH:float = 100
+@export var DAMAGE_KNOCKBACK:float = 30
+@export var KNOCKBACK_DECELERATION:float = 3
 
 const chain_scene := preload('res://src/player/chain.tscn')
 
 var current_speed := SPEED
 var current_acceleration := FLOOR_ACCELERATION
 var movementSpeed:Vector2
+var knockback_speed:Vector2
 var direction: Vector3
 var movement_tween: Tween
 
@@ -48,6 +57,8 @@ var is_grab_chain:bool
 var is_in_grab := false
 var chain_goal_enemy:Enemy
 var chain_goal_pos:Vector3
+
+@onready var health:float = MAX_HEALTH
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -73,6 +84,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			
 			# contraint la rotation de la caméra pour éviter que le joueur puisse se tordre le cou
 			%Camera.rotation.x = clamp(%Camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+
+### HANDLERS ###
 
 func coyote_time_handler() -> void:
 	if (is_on_floor()):
@@ -106,7 +119,7 @@ func grab_handler() -> void:
 		if Input.is_action_just_pressed("grab"):
 			if collider as Enemy:
 				chain_goal_enemy = collider
-				chain_goal_enemy.is_grabbed()
+				chain_goal_enemy.grab()
 			else:
 				chain_goal_enemy = null
 				chain_goal_pos = %GraplingHookRayCast.get_collision_point()
@@ -131,22 +144,19 @@ func grab_handler() -> void:
 		var force_release := global_position.distance_squared_to(goal_pos) < GRAB_RELEASE_DISTANCE ** 2
 		
 		if Input.is_action_just_released("grab") || force_release:
+			ungrab()
+			
 			if force_release:
 				current_speed = SPEED
 				if chain_goal_enemy != null:
 					chain_goal_enemy.damage(GRAB_DAMAGE)
-				
-			%GraplingHookCooldown.start()
-			is_in_grab = false
-			direction = Vector3.ZERO
-			if velocity.y > JUMP_FORCE * 1.5:
-				velocity.y = JUMP_FORCE * 1.5
-			print(velocity.y)
-			movement_tween.kill()
+					
+					var knockback = MOB_GRAB_KNOCKBACK * global_position.direction_to(chain_goal_enemy.global_position)
+					velocity.y = MOB_GRAB_JUMP_FORCE + max(0, velocity.y)
+					knockback_speed -= Vector2(knockback.x, knockback.z)
+			elif chain_goal_enemy != null:
+				chain_goal_enemy.ungrab()
 			
-			%PlayerUi.on_ungrab()
-			chain.delete()
-			chain = null
 		else:
 			direction = global_position.direction_to(goal_pos)
 			velocity = direction * current_speed
@@ -154,6 +164,19 @@ func grab_handler() -> void:
 		if Input.is_action_just_released("grab"):
 			chain.delete()
 			chain = null
+			%PlayerUi.on_ungrab()
+
+func ungrab():
+	%GraplingHookCooldown.start()
+	is_in_grab = false
+	direction = Vector3.ZERO
+	if velocity.y > JUMP_FORCE * 1.5:
+		velocity.y = JUMP_FORCE * 1.5
+	movement_tween.kill()
+	
+	%PlayerUi.on_ungrab()
+	chain.delete()
+	chain = null
 
 func begin_grab_movement():
 	is_in_grab = true
@@ -169,6 +192,7 @@ func attack_handler() -> void:
 		is_grab_chain = false
 		if collider as Enemy:
 				chain_goal_enemy = collider
+				chain_goal_pos = chain_goal_enemy.global_position
 		else:
 				chain_goal_enemy = null
 				chain_goal_pos = %ShootRayCast.get_collision_point()
@@ -186,6 +210,9 @@ func attack_handler() -> void:
 		chain.deleted.connect(on_attack_chain_deleted)
 		chain.contact.connect(on_attack_land)
 		get_parent().add_child(chain)
+		
+		var knockback = global_position.direction_to(chain_goal_pos) * SHOOT_RECOIL
+		knockback_speed -= Vector2(knockback.x, knockback.z)
 
 func on_attack_land():
 	%ShootCooldown.start()
@@ -225,11 +252,28 @@ func movement_handler(delta:float) -> void :
 	if !is_movement_overrided():
 		movementSpeed = lerp(movementSpeed, Vector2(direction.x, direction.z) * current_speed, current_acceleration * delta)
 	
+	knockback_speed = lerp(knockback_speed, Vector2.ZERO, KNOCKBACK_DECELERATION * delta)
+	
 	if !is_velocity_overrided():
-		velocity.x = movementSpeed.x
-		velocity.z = movementSpeed.y
+		velocity.x = movementSpeed.x + knockback_speed.x
+		velocity.z = movementSpeed.y + knockback_speed.y
 	
 	move_and_slide()
+
+### React FUNCS ###
+
+func damage(damage:float, source:Vector3) -> void:
+	health -= damage
+	
+	if health <= 0:
+		print('PLAYER DEAD, DO THAT')
+	else:
+		if (is_in_grab):
+			ungrab()
+		
+		%PlayerUi.on_damage(health / MAX_HEALTH)
+		var knockback = global_position.direction_to(source) * DAMAGE_KNOCKBACK
+		knockback_speed -= Vector2(knockback.x, knockback.z)
 
 ### CONSTS FUNCS ###
 

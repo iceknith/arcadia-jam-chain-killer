@@ -64,6 +64,8 @@ radius = 0.05
 height = 0.1
 
 [node name="Player" type="CharacterBody3D" unique_id=256785396]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_4anbu")
 FOV_SPEED_MULT = 3.0
 
@@ -84,10 +86,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7229739, 0)
 [node name="GraplingHookRayCast" type="RayCast3D" parent="Camera" unique_id=1400462130]
 unique_name_in_owner = true
 target_position = Vector3(0, 0, 0)
+collision_mask = 5
 
 [node name="ShootRayCast" type="RayCast3D" parent="Camera" unique_id=1710378985]
 unique_name_in_owner = true
 target_position = Vector3(0, 0, 0)
+collision_mask = 5
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=980152538]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27895606, 0)

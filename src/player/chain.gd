@@ -37,15 +37,14 @@ func _process(delta: float) -> void:
 		head_pos += velocity
 		if player.get_chain_origin().distance_squared_to(head_pos) >= player.get_chain_origin().distance_squared_to(real_goal_pos):
 			has_reached_end = true
-			head_pos = goal_pos
+			head_pos = real_goal_pos
 			contact.emit()
 			$DeleteTimer.stop()
 	else:
-		head_pos = goal_pos
+		head_pos = real_goal_pos
 	
 	position = (player.get_chain_origin() + head_pos)/2
 	plane_mesh.size.y = player.get_chain_origin().distance_to(head_pos)
-	#mesh_material.uv1_offset.y = plane_mesh.size.y / 2
 	mesh_material.uv1_scale.y = plane_mesh.size.y / texture_size
 	
 	look_at(player.get_chain_origin())
