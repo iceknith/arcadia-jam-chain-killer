@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://e5v1msdbivn8" path="res://src/player/player.tscn" id="1_fmhij"]
 [ext_resource type="PackedScene" uid="uid://ksw8n26des1g" path="res://src/map/map.tscn" id="3_05ll0"]
+[ext_resource type="PackedScene" uid="uid://bkp1vkxo2div" path="res://src/enemies/dummy/dummyEnemy.tscn" id="3_46xhi"]
 
 [sub_resource type="Environment" id="Environment_fmhij"]
 
@@ -9,6 +10,26 @@
 
 [node name="Player" parent="." unique_id=256785396 instance=ExtResource("1_fmhij")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.83855, 2.2285628, -8.21027)
+SPEED = null
+JUMP_FORCE = null
+GRAVITY = null
+LOOK_SENSITIVITY = null
+FLOOR_ACCELERATION = null
+AIR_ACCELERATION = null
+JUMP_ACCELERATION_MULT = null
+SPEED_CHANGE_ACCELERATION = null
+DASH_ACCELERATION_DURATION = null
+DASH_DECELERATION_DIRATION = null
+DASH_PEAK_SPEED = null
+MIN_FOV = null
+GRAB_DISTANCE = null
+GRAB_RELEASE_DISTANCE = null
+GRAB_MAX_SPEED = null
+GRAB_ACCELERATION_DURATION = null
+GRAB_DAMAGE = null
+SHOOT_DAMAGE = null
+SHOOT_MAX_DISTANCE = null
+SHOOT_LAUNCH_SPEED_MULT = null
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1370491774]
 environment = SubResource("Environment_fmhij")
@@ -19,3 +40,6 @@ light_color = Color(0.80527645, 0.99999994, 0.9627375, 1)
 light_energy = 0.489
 
 [node name="map" parent="." unique_id=440204247 instance=ExtResource("3_05ll0")]
+
+[node name="DummyEnemy" parent="." unique_id=1486919279 instance=ExtResource("3_46xhi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.604364, 0.6965468, 5.2954054)
