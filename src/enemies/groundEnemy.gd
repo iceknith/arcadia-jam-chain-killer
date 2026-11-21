@@ -6,7 +6,7 @@ extends Enemy
 @export var SPEED:float = 6
 @export var ACCELERATION:float = 3
 
-const PATH_UPDATE_TIME = 0.1
+const PATH_UPDATE_TIME = 0.5
 
 var pathUpdateTimer:Timer
 var player:Player = null
@@ -18,6 +18,7 @@ func _ready() -> void:
 		detection_range.body_exited.connect(_on_detection_range_exited)
 	
 	pathUpdateTimer = Timer.new()
+	pathUpdateTimer.wait_time = PATH_UPDATE_TIME
 	pathUpdateTimer.timeout.connect(_on_path_update)
 	add_child(pathUpdateTimer)
 

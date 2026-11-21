@@ -57,6 +57,8 @@ func death_animation():
 		queue_free()
 
 func grab():
+	if health <= 0: return
+	
 	if damage_tween: damage_tween.kill()
 	damage_tween = create_tween()
 	damage_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CIRC)

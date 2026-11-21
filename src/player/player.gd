@@ -144,18 +144,7 @@ func grab_handler() -> void:
 		var force_release := global_position.distance_squared_to(goal_pos) < GRAB_RELEASE_DISTANCE ** 2
 		
 		if Input.is_action_just_released("grab") || force_release:
-			ungrab()
-			
-			if force_release:
-				current_speed = SPEED
-				if chain_goal_enemy != null:
-					chain_goal_enemy.damage(GRAB_DAMAGE)
-					
-					var knockback = MOB_GRAB_KNOCKBACK * global_position.direction_to(chain_goal_enemy.global_position)
-					velocity.y = MOB_GRAB_JUMP_FORCE + max(0, velocity.y)
-					knockback_speed -= Vector2(knockback.x, knockback.z)
-			elif chain_goal_enemy != null:
-				chain_goal_enemy.ungrab()
+			ungrab(force_release)
 			
 		else:
 			direction = global_position.direction_to(goal_pos)
@@ -166,7 +155,7 @@ func grab_handler() -> void:
 			chain = null
 			%PlayerUi.on_ungrab()
 
-func ungrab():
+func ungrab(force_release:bool):
 	%GraplingHookCooldown.start()
 	is_in_grab = false
 	direction = Vector3.ZERO
@@ -177,6 +166,17 @@ func ungrab():
 	%PlayerUi.on_ungrab()
 	chain.delete()
 	chain = null
+	
+	if force_release:
+		current_speed = SPEED
+		if chain_goal_enemy != null:
+			chain_goal_enemy.damage(GRAB_DAMAGE)
+			
+			var knockback = MOB_GRAB_KNOCKBACK * global_position.direction_to(chain_goal_enemy.global_position)
+			velocity.y = MOB_GRAB_JUMP_FORCE + max(0, velocity.y)
+			knockback_speed -= Vector2(knockback.x, knockback.z)
+	elif chain_goal_enemy != null:
+		chain_goal_enemy.ungrab()
 
 func begin_grab_movement():
 	is_in_grab = true
@@ -269,7 +269,7 @@ func damage(damage:float, source:Vector3) -> void:
 		print('PLAYER DEAD, DO THAT')
 	else:
 		if (is_in_grab):
-			ungrab()
+			ungrab(false)
 		
 		%PlayerUi.on_damage(health / MAX_HEALTH)
 		var knockback = global_position.direction_to(source) * DAMAGE_KNOCKBACK
