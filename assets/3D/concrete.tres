@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bvtc1udbvhpor" path="res://assets/images/map/Concrete.jpg" id="1_nrdtm"]
 
 [resource]
+cull_mode = 2
 albedo_texture = ExtResource("1_nrdtm")
 uv1_scale = Vector3(0.02, 0.02, 0.02)
 uv1_triplanar = true

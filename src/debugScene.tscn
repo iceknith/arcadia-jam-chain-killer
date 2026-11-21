@@ -15,7 +15,7 @@ environment = SubResource("Environment_fmhij")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1891300388]
 transform = Transform3D(1, 0, 0, 0, -0.544639, 0.8386705, 0, -0.8386705, -0.544639, 0, 0, 0)
-light_color = Color(0, 0.44313726, 0.39607844, 1)
+light_color = Color(0.80527645, 0.99999994, 0.9627375, 1)
 light_energy = 0.489
 
 [node name="map" parent="." unique_id=440204247 instance=ExtResource("3_05ll0")]
