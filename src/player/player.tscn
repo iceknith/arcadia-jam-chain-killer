@@ -115,6 +115,11 @@ unique_name_in_owner = true
 wait_time = 0.5
 one_shot = true
 
+[node name="InvincibilityCooldown" type="Timer" parent="." unique_id=517960996]
+unique_name_in_owner = true
+wait_time = 2.0
+one_shot = true
+
 [node name="CameraAnimator" type="AnimationPlayer" parent="." unique_id=603569710]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_rxibo")

@@ -50,6 +50,7 @@ var direction: Vector3
 var movement_tween: Tween
 
 var is_dashing := false
+var is_death_anim := false
 
 var chain:Chain
 var is_grab_chain:bool
@@ -57,6 +58,8 @@ var is_grab_chain:bool
 var is_in_grab := false
 var chain_goal_enemy:Enemy
 var chain_goal_pos:Vector3
+
+@onready var respawn_point:Vector3 = global_position
 
 @onready var health:float = MAX_HEALTH
 
@@ -262,38 +265,51 @@ func movement_handler(delta:float) -> void :
 
 ### React FUNCS ###
 
-func damage(damage:float, source:Vector3) -> void:
-	health -= damage
+func damage(dealt_damage:float, source:Vector3) -> void:
+	if !can_take_damage(): return
+	
+	health -= dealt_damage
 	
 	if health <= 0:
-		print('PLAYER DEAD, DO THAT')
+		death_animation()
 	else:
 		if (is_in_grab):
 			ungrab(false)
 		
 		%PlayerUi.on_damage(health / MAX_HEALTH)
+		%InvincibilityCooldown.start()
 		var knockback = global_position.direction_to(source) * DAMAGE_KNOCKBACK
 		knockback_speed -= Vector2(knockback.x, knockback.z)
 
+func death_animation():
+	is_death_anim = true
+	global_position = respawn_point
+	health = MAX_HEALTH
+	velocity = Vector3.ZERO
+	is_death_anim = false
+
 ### CONSTS FUNCS ###
 
+func can_take_damage() -> bool:
+	return !is_death_anim && %InvincibilityCooldown.is_stopped()
+
 func is_gravity_overrided() -> bool:
-	return is_in_grab
+	return is_death_anim || is_in_grab
 
 func is_speed_overrided() -> bool:
-	return is_dashing || is_in_grab
+	return is_death_anim || is_dashing || is_in_grab
 
 func is_direction_overrided() -> bool:
-	return is_in_grab
+	return is_death_anim || is_in_grab
 
 func is_movement_overrided() -> bool:
-	return is_in_grab
+	return is_death_anim || is_in_grab
 
 func is_acceleration_overrided() -> bool:
-	return is_dashing || is_in_grab
+	return is_death_anim || is_dashing || is_in_grab
 
 func is_velocity_overrided() -> bool:
-	return is_in_grab
+	return is_death_anim || is_in_grab
 
 func get_chain_origin() -> Vector3:
 	return %GrabOrigin.global_position if is_grab_chain else %AttackOrigin.global_position

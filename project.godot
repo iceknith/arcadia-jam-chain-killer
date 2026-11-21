@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="arcadia-jam-chain-killer"
-run/main_scene="uid://c81ko810vmut3"
+run/main_scene="uid://dhby1a4iu1vjf"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
