@@ -114,6 +114,13 @@ func launch_spawn_enemies():
 func on_attack_end():
 	var tween := create_tween()
 	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
+	
+	if attack == 'bullets':
+		launch_bullets()
+	elif attack == 'laser':
+		launch_laser()
+	elif attack == 'spawn_enemies':
+		launch_spawn_enemies()
 	tween.tween_property(self, 'global_position', default_pos, ATTACK_TRANSITION_TIME)
 	await tween.finished
 	
