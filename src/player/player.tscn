@@ -107,13 +107,18 @@ one_shot = true
 unique_name_in_owner = true
 one_shot = true
 
+[node name="ShootCooldown" type="Timer" parent="." unique_id=1792072965]
+unique_name_in_owner = true
+wait_time = 0.5
+one_shot = true
+
 [node name="CameraAnimator" type="AnimationPlayer" parent="." unique_id=603569710]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_rxibo")
 
 [node name="GrabOrigin" type="Marker3D" parent="." unique_id=1835769841]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17865473, 0.10504997, 0.15116507)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04135579, 0.10504997, 0.15116507)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="GrabOrigin" unique_id=301740171]
 visible = false
@@ -122,7 +127,7 @@ metadata/_edit_lock_ = true
 
 [node name="AttackOrigin" type="Marker3D" parent="." unique_id=1650400463]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17865473, 0.10504997, 0.15116507)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41833717, 0.3969664, 0.15116507)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="AttackOrigin" unique_id=573618346]
 visible = false

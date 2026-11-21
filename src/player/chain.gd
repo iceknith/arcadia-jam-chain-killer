@@ -25,13 +25,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var real_goal_pos := goal_enemy.global_position if goal_enemy != null else goal_pos
 	
-	var direction := (real_goal_pos - player.get_chain_origin()).normalized()
-	var velocity := direction * delta * SPEED
 	if is_retracting:
-		head_pos -= velocity
+		var direction := (player.get_chain_origin() - head_pos).normalized()
+		var velocity := direction * delta * SPEED
+		head_pos += velocity
 		if player.get_chain_origin().distance_squared_to(head_pos) <= delta * SPEED * 5:
 			delete()
 	elif !has_reached_end:
+		var direction := (real_goal_pos - player.get_chain_origin()).normalized()
+		var velocity := direction * delta * SPEED
 		head_pos += velocity
 		if player.get_chain_origin().distance_squared_to(head_pos) >= player.get_chain_origin().distance_squared_to(real_goal_pos):
 			has_reached_end = true

@@ -139,7 +139,9 @@ func grab_handler() -> void:
 			%GraplingHookCooldown.start()
 			is_in_grab = false
 			direction = Vector3.ZERO
-			velocity.y = sqrt(velocity.y)
+			if velocity.y > JUMP_FORCE * 1.5:
+				velocity.y = JUMP_FORCE * 1.5
+			print(velocity.y)
 			movement_tween.kill()
 			
 			%PlayerUi.on_ungrab()
@@ -155,39 +157,45 @@ func grab_handler() -> void:
 
 func begin_grab_movement():
 	is_in_grab = true
+	%PlayerUi.on_grab_retract()
 	if movement_tween: movement_tween.kill()
 	movement_tween = create_tween()
 	movement_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	movement_tween.tween_property(self, 'current_speed', GRAB_MAX_SPEED, GRAB_ACCELERATION_DURATION)
 
 func attack_handler() -> void:
-	if Input.is_action_pressed('shoot') && chain == null && %PlayerUi.can_shoot:
+	if Input.is_action_just_pressed('shoot') && chain == null && %ShootCooldown.is_stopped():
 		var collider = %ShootRayCast.get_collider()
 		is_grab_chain = false
 		if collider as Enemy:
-			chain_goal_enemy = collider
+				chain_goal_enemy = collider
 		else:
-			chain_goal_enemy = null
-			chain_goal_pos = %ShootRayCast.get_collision_point()
-			if chain_goal_pos == global_position:
-				chain_goal_pos += %ShootRayCast.target_position
-			
+				chain_goal_enemy = null
+				chain_goal_pos = %ShootRayCast.get_collision_point()
+				if chain_goal_pos == global_position:
+					chain_goal_pos += %ShootRayCast.target_position
 		%PlayerUi.on_shoot()
 	
 		chain = chain_scene.instantiate()
+		chain.SPEED *= 1.5
 		chain.player = self
 		if collider as Enemy:
 			chain.goal_enemy = chain_goal_enemy
 		else:
 			chain.goal_pos = chain_goal_pos
-		chain.deleted.connect(func (): chain = null)
+		chain.deleted.connect(on_attack_chain_deleted)
 		chain.contact.connect(on_attack_land)
 		get_parent().add_child(chain)
 
 func on_attack_land():
+	%ShootCooldown.start()
 	if chain_goal_enemy != null:
 		chain_goal_enemy.damage(SHOOT_DAMAGE)
 	chain.retract()
+
+func on_attack_chain_deleted():
+	%PlayerUi.on_shoot_end()
+	chain = null
 
 func movement_handler(delta:float) -> void :
 	if !is_gravity_overrided():

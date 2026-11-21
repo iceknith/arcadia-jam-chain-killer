@@ -16,7 +16,10 @@ func _ready() -> void:
 	$AnimationPlayer.play_backwards("can_grab")
 
 func on_shoot():
-	pass
+	$AnimatedSprite2D.play("shoot")
+
+func on_shoot_end():
+	$AnimatedSprite2D.play("idle")
 
 func on_can_grab():
 	if (can_grab != true && grab != true):
@@ -37,12 +40,17 @@ func on_grab():
 		grab = true
 		can_grab = false
 		$AnimationPlayer.play("on_grab")
+		$AnimatedSprite2D.play("grab_launch")
+
+func on_grab_retract():
+	$AnimatedSprite2D.play("grab_retract")
 
 func on_ungrab():
 	if grab:
 		grab = false
 		can_grab = false
 		$AnimationPlayer.play("on_ungrab")
+		$AnimatedSprite2D.play("idle")
 
 func _draw() -> void:
 	# Draw 
@@ -68,5 +76,3 @@ func _draw() -> void:
 
 func _process(_delta: float) -> void:
 	queue_redraw()
-	
-	can_shoot = $AnimatedSprite2D.animation == 'idle' && $AnimatedSprite2D.frame in [2,3, 8,9]
