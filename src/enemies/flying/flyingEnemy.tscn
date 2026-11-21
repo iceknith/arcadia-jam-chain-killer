@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bl0idrix3jsr1" path="res://assets/images/enemy/bat1.png" id="2_jpap0"]
 [ext_resource type="Texture2D" uid="uid://b3trqmhiehn8w" path="res://assets/images/enemy/bat2.png" id="3_3rkhm"]
 [ext_resource type="Texture2D" uid="uid://bnwsm0wnwc1jv" path="res://assets/images/enemy/bat3.png" id="4_022jg"]
+[ext_resource type="AudioStream" uid="uid://8nep3vg42c4e" path="res://assets/sound/processed/enemy_hit.mp3" id="5_3rkhm"]
+[ext_resource type="AudioStream" uid="uid://d03a3f27cfju0" path="res://assets/sound/processed/bat_wings.mp3" id="6_022jg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_au5t6"]
 animations = [{
@@ -31,11 +33,13 @@ size = Vector3(1.0867157, 0.816864, 1.2402344)
 [sub_resource type="SphereShape3D" id="SphereShape3D_wu8kj"]
 radius = 30.0
 
-[node name="BatEnemy" type="CharacterBody3D" unique_id=1510569336 node_paths=PackedStringArray("detection_range", "contact_damage_area", "sprite")]
+[node name="BatEnemy" type="CharacterBody3D" unique_id=1510569336 node_paths=PackedStringArray("detection_range", "ambiant_sound_player", "contact_damage_area", "damage_sound_player", "sprite")]
 collision_layer = 4
 script = ExtResource("1_au5t6")
 detection_range = NodePath("DetectionRange")
+ambiant_sound_player = NodePath("AmbiantSound")
 contact_damage_area = NodePath("Area3D")
+damage_sound_player = NodePath("DamageStreamPlayer")
 sprite = NodePath("Sprite3D")
 metadata/_custom_type_script = "uid://m42myfffckyh"
 
@@ -67,3 +71,10 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionRange" unique_id=1140661989]
 shape = SubResource("SphereShape3D_wu8kj")
 debug_color = Color(0, 0.735357, 0, 0.42000002)
+
+[node name="DamageStreamPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1999203984]
+stream = ExtResource("5_3rkhm")
+volume_db = 6.0
+
+[node name="AmbiantSound" type="AudioStreamPlayer3D" parent="." unique_id=198110128]
+stream = ExtResource("6_022jg")

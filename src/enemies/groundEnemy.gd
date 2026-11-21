@@ -3,6 +3,7 @@ extends Enemy
 
 @export var detection_range:Area3D
 @export var navigation_agent:NavigationAgent3D
+@export var ambiant_sound_player:AudioStreamPlayer3D
 @export var SPEED:float = 6
 @export var ACCELERATION:float = 3
 

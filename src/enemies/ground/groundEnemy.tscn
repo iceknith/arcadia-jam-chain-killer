@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://byoramky8j1rt" path="res://src/enemies/groundEnemy.gd" id="1_it81d"]
 [ext_resource type="Texture2D" uid="uid://c37ogadtsy1qh" path="res://assets/images/enemy/chair1.png" id="2_nbqnt"]
 [ext_resource type="Texture2D" uid="uid://vaq6qqta68la" path="res://assets/images/enemy/chair2.png" id="3_td4sg"]
+[ext_resource type="AudioStream" uid="uid://8nep3vg42c4e" path="res://assets/sound/processed/enemy_hit.mp3" id="4_nbqnt"]
+[ext_resource type="AudioStream" uid="uid://yioyvx27ku1a" path="res://assets/sound/processed/chair_rolling.mp3" id="5_td4sg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_637yn"]
 animations = [{
@@ -27,12 +29,14 @@ size = Vector3(1.0867157, 0.816864, 1.2402344)
 [sub_resource type="SphereShape3D" id="SphereShape3D_wu8kj"]
 radius = 30.0
 
-[node name="ChairEnemy" type="CharacterBody3D" unique_id=1510569336 node_paths=PackedStringArray("detection_range", "navigation_agent", "contact_damage_area", "sprite")]
+[node name="ChairEnemy" type="CharacterBody3D" unique_id=1510569336 node_paths=PackedStringArray("detection_range", "navigation_agent", "ambiant_sound_player", "contact_damage_area", "damage_sound_player", "sprite")]
 collision_layer = 4
 script = ExtResource("1_it81d")
 detection_range = NodePath("DetectionRange")
 navigation_agent = NodePath("NavigationAgent3D")
+ambiant_sound_player = NodePath("AmbiantSound")
 contact_damage_area = NodePath("Area3D")
+damage_sound_player = NodePath("DamageStreamPlayer")
 sprite = NodePath("Sprite3D")
 DAMAGE_COLOR_2 = Color(0.6204995, 0, 0, 1)
 DAMAGE_FLICKER_COUNT = 1
@@ -68,3 +72,10 @@ shape = SubResource("SphereShape3D_wu8kj")
 debug_color = Color(0, 0.735357, 0, 0.42000002)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1039380861]
+
+[node name="DamageStreamPlayer" type="AudioStreamPlayer3D" parent="." unique_id=530703268]
+stream = ExtResource("4_nbqnt")
+volume_db = 6.0
+
+[node name="AmbiantSound" type="AudioStreamPlayer3D" parent="." unique_id=1722002781]
+stream = ExtResource("5_td4sg")

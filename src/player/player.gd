@@ -41,6 +41,10 @@ extends CharacterBody3D
 @export var DAMAGE_KNOCKBACK:float = 30
 @export var KNOCKBACK_DECELERATION:float = 3
 
+@export_group('Sound')
+@export var AIR_MIN_VOLUME:float = -40
+@export var AIR_VOLUME_SPEED_SCALE:float = 1
+
 const chain_scene := preload('res://src/player/chain.tscn')
 
 var current_speed := SPEED
@@ -70,7 +74,10 @@ func _ready() -> void:
 	%ShootRayCast.target_position.z = -SHOOT_MAX_DISTANCE
 
 func _process(delta: float) -> void:
-	%Camera.fov = min(lerp(%Camera.fov, MIN_FOV + velocity.length() * FOV_SPEED_MULT, 5 * delta), MAX_FOV)
+	var velocity_speed := velocity.length()
+	
+	%Camera.fov = min(lerp(%Camera.fov, MIN_FOV + velocity_speed * FOV_SPEED_MULT, 5 * delta), MAX_FOV)
+	%InAirSoundPlayer.volume_db = AIR_MIN_VOLUME + velocity_speed * AIR_VOLUME_SPEED_SCALE
 	
 	attack_handler()
 
@@ -161,6 +168,7 @@ func grab_handler() -> void:
 
 func ungrab(force_release:bool):
 	%GraplingHookCooldown.start()
+	%ChainPullSoundPlayer.stop()
 	is_in_grab = false
 	direction = Vector3.ZERO
 	if velocity.y > JUMP_FORCE * 1.5:
@@ -185,6 +193,8 @@ func ungrab(force_release:bool):
 func begin_grab_movement():
 	is_in_grab = true
 	%PlayerUi.on_grab_retract()
+	%ChainImpact.play()
+	%ChainPullSoundPlayer.play()
 	if movement_tween: movement_tween.kill()
 	movement_tween = create_tween()
 	movement_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
@@ -203,6 +213,7 @@ func attack_handler() -> void:
 				if chain_goal_pos == global_position:
 					chain_goal_pos += %ShootRayCast.target_position
 		%PlayerUi.on_shoot()
+		%ChainLaunch.play()
 	
 		chain = chain_scene.instantiate()
 		chain.SPEED *= 1.5
@@ -220,6 +231,7 @@ func attack_handler() -> void:
 
 func on_attack_land():
 	%ShootCooldown.start()
+	%ChainLaunch.stop()
 	if chain_goal_enemy != null:
 		chain_goal_enemy.damage(SHOOT_DAMAGE)
 	chain.retract()
@@ -261,6 +273,11 @@ func movement_handler(delta:float) -> void :
 	if !is_velocity_overrided():
 		velocity.x = movementSpeed.x + knockback_speed.x
 		velocity.z = movementSpeed.y + knockback_speed.y
+		
+		if is_on_floor() && direction.length_squared() >= 0.01 && !%WalkingSoundPlayer.playing:
+			%WalkingSoundPlayer.play(randf_range(0, %WalkingSoundPlayer.stream.get_length()))
+		elif (!is_on_floor() || direction.length_squared() < 0.01) && %WalkingSoundPlayer.playing:
+			%WalkingSoundPlayer.stop()
 	
 	move_and_slide()
 
@@ -270,6 +287,7 @@ func damage(dealt_damage:float, source:Vector3 = Vector3.ZERO) -> void:
 	if !can_take_damage(): return
 	
 	health -= dealt_damage
+	%DamageSoundPlayer.play()
 	
 	if health <= 0:
 		death_animation()

@@ -2,6 +2,7 @@ class_name Enemy
 extends CharacterBody3D
 
 @export var contact_damage_area:Area3D
+@export var damage_sound_player:AudioStreamPlayer3D
 @export_group('Attack')
 @export var MAX_HEALTH:float = 10
 @export var STUN_TIME:float = 1
@@ -29,6 +30,8 @@ func _ready() -> void:
 func damage(damage_delt:float):
 	if health <= 0: return
 	
+	if damage_sound_player:
+		damage_sound_player.play()
 	health -= damage_delt
 	if health <= 0:
 		death_animation()

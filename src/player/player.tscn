@@ -2,6 +2,12 @@
 
 [ext_resource type="Script" uid="uid://7hn2hxfttba8" path="res://src/player/player.gd" id="1_4anbu"]
 [ext_resource type="PackedScene" uid="uid://b86j70vdxxrxu" path="res://src/player/playerUI.tscn" id="2_rxibo"]
+[ext_resource type="AudioStream" uid="uid://df0anyc7mxgtk" path="res://assets/sound/processed/player_in_air.mp3" id="3_l271a"]
+[ext_resource type="AudioStream" uid="uid://dtqp2c442ryqt" path="res://assets/sound/processed/walk.mp3" id="3_x42xx"]
+[ext_resource type="AudioStream" uid="uid://bebcpdmq1epec" path="res://assets/sound/processed/player_hurt.mp3" id="4_l271a"]
+[ext_resource type="AudioStream" uid="uid://70t64h66iclj" path="res://assets/sound/processed/pulling_chain.mp3" id="5_8ydov"]
+[ext_resource type="AudioStream" uid="uid://bnk0wi1j86a4f" path="res://assets/sound/processed/chain_impact.mp3" id="7_cwolq"]
+[ext_resource type="AudioStream" uid="uid://dl3u7ewf1ugel" path="res://assets/sound/processed/shooting_chain.mp3" id="9_l271a"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wu8kj"]
 
@@ -144,3 +150,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41833717, 0.3969664, 0.1511
 visible = false
 mesh = SubResource("SphereMesh_wu8kj")
 metadata/_edit_lock_ = true
+
+[node name="InAirSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1709106158]
+unique_name_in_owner = true
+stream = ExtResource("3_l271a")
+autoplay = true
+
+[node name="WalkingSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1299566540]
+unique_name_in_owner = true
+stream = ExtResource("3_x42xx")
+
+[node name="DamageSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1846262775]
+unique_name_in_owner = true
+stream = ExtResource("4_l271a")
+volume_db = 7.0
+
+[node name="ChainPullSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1553008689]
+unique_name_in_owner = true
+stream = ExtResource("5_8ydov")
+
+[node name="ChainImpact" type="AudioStreamPlayer3D" parent="." unique_id=1374664611]
+unique_name_in_owner = true
+stream = ExtResource("7_cwolq")
+volume_db = -39.0
+
+[node name="ChainLaunch" type="AudioStreamPlayer3D" parent="." unique_id=662037848]
+unique_name_in_owner = true
+stream = ExtResource("9_l271a")

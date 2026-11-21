@@ -2,6 +2,7 @@ class_name FlyingEnemy
 extends Enemy
 
 @export var detection_range:Area3D
+@export var ambiant_sound_player:AudioStreamPlayer3D
 @export var SPEED:float = 6
 @export var ACCELERATION:float = 3
 
@@ -25,7 +26,9 @@ func _physics_process(delta: float) -> void:
 func _on_detection_range_entered(body:Node3D):
 	if body as Player:
 		player = body
+		ambiant_sound_player.play()
 
 func _on_detection_range_exited(body):
 	if body as Player:
 		player = null
+		ambiant_sound_player.stop()

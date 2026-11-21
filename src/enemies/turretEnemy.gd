@@ -2,6 +2,7 @@ class_name TurretEnemy
 extends Enemy
 
 @export var detection_range:Area3D
+@export var shooting_sound_player:AudioStreamPlayer3D
 @export var bullet_scene:PackedScene
 @export var SHOOTING_DURATION:float = 2
 
@@ -35,3 +36,5 @@ func _on_shoot():
 		bullet.position = global_position
 		bullet.direction = global_position.direction_to(player.global_position)
 		get_parent().add_child(bullet)
+		if shooting_sound_player:
+			shooting_sound_player.play()

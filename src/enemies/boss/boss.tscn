@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bmw7c7iip7tgm" path="res://src/enemies/boss/boss.gd" id="1_cumcl"]
 [ext_resource type="PackedScene" uid="uid://bkp1vkxo2div" path="res://src/enemies/dummy/dummyEnemy.tscn" id="2_d0l2c"]
 [ext_resource type="Texture2D" uid="uid://cgo6j1cn54txd" path="res://icon.svg" id="2_wh6x1"]
+[ext_resource type="AudioStream" uid="uid://8nep3vg42c4e" path="res://assets/sound/processed/enemy_hit.mp3" id="4_y0qss"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d0l2c"]
 size = Vector3(5.3, 6, 5.3)
@@ -24,7 +25,7 @@ height = 20.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_wu8kj"]
 radius = 10.0
 
-[node name="Boss" type="CharacterBody3D" unique_id=11309565 node_paths=PackedStringArray("contact_damage_area", "sprite")]
+[node name="Boss" type="CharacterBody3D" unique_id=11309565 node_paths=PackedStringArray("contact_damage_area", "damage_sound_player", "sprite")]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_cumcl")
@@ -34,6 +35,7 @@ enemies_boss_max_distance_y = 10.0
 enemies = Array[PackedScene]([ExtResource("2_d0l2c")])
 MOB_AMOUNT = 3
 contact_damage_area = NodePath("Area3D")
+damage_sound_player = NodePath("DamageStreamPlayer")
 sprite = NodePath("Sprite3D")
 DAMAGE_COLOR_1 = Color(1, 0.59819686, 0.5539304, 1)
 DAMAGE_COLOR_2 = Color(1, 0.37799087, 0.31005043, 1)
@@ -94,3 +96,7 @@ collision_mask = 0
 unique_name_in_owner = true
 shape = SubResource("SphereShape3D_wu8kj")
 disabled = true
+
+[node name="DamageStreamPlayer" type="AudioStreamPlayer3D" parent="." unique_id=189929746]
+stream = ExtResource("4_y0qss")
+volume_db = 6.0
