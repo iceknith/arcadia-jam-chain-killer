@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c81ko810vmut3"]
 
 [ext_resource type="PackedScene" uid="uid://e5v1msdbivn8" path="res://src/player/player.tscn" id="1_fmhij"]
-[ext_resource type="PackedScene" uid="uid://q8fukf7g7uwb" path="res://assets/3D/map_test.blend" id="2_fmhij"]
+[ext_resource type="PackedScene" uid="uid://ksw8n26des1g" path="res://src/map/map.tscn" id="3_05ll0"]
 
 [sub_resource type="Environment" id="Environment_fmhij"]
 
@@ -10,11 +10,12 @@
 [node name="Player" parent="." unique_id=256785396 instance=ExtResource("1_fmhij")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5175567, 2.2285628, 1.1965113)
 
-[node name="map_test" parent="." unique_id=1455056701 instance=ExtResource("2_fmhij")]
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1370491774]
 environment = SubResource("Environment_fmhij")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1891300388]
 transform = Transform3D(1, 0, 0, 0, 0.061048508, 0.9981348, 0, -0.9981348, 0.061048508, 0, 0, 0)
-light_color = Color(0, 0.44313726, 0.39607844, 1)
+light_color = Color(0.8247985, 0.99999994, 0.9660662, 1)
+
+[node name="map" parent="." unique_id=440204247 instance=ExtResource("3_05ll0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.499596, 0, -2.9613838)
