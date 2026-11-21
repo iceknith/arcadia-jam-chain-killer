@@ -48,37 +48,40 @@ light_energy = 0.489
 
 [node name="map" parent="." unique_id=440204247 instance=ExtResource("3_05ll0")]
 
-[node name="ChairEnemy" parent="." unique_id=1510569336 instance=ExtResource("4_46xhi")]
+[node name="mob_test" type="Node3D" parent="." unique_id=96501381]
+visible = false
+
+[node name="ChairEnemy" parent="mob_test" unique_id=1510569336 instance=ExtResource("4_46xhi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.992825, 1.011122, 10.073559)
 
-[node name="ChairEnemy2" parent="." unique_id=1971383563 instance=ExtResource("5_y6ayu")]
+[node name="ChairEnemy2" parent="mob_test" unique_id=1971383563 instance=ExtResource("5_y6ayu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.699322, 7.0721827, 1.6329718)
 MAX_HEALTH = 5.0
 
-[node name="EyeEnemy" parent="." unique_id=478503297 instance=ExtResource("6_xj0t3")]
+[node name="EyeEnemy" parent="mob_test" unique_id=478503297 instance=ExtResource("6_xj0t3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.995422, 5.96323, -3.7556963)
 MAX_HEALTH = 5.0
 
-[node name="EyeEnemy3" parent="." unique_id=331063251 instance=ExtResource("6_xj0t3")]
+[node name="EyeEnemy3" parent="mob_test" unique_id=331063251 instance=ExtResource("6_xj0t3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.995422, 5.96323, -8.621676)
 MAX_HEALTH = 5.0
 
-[node name="EyeEnemy5" parent="." unique_id=1046812573 instance=ExtResource("6_xj0t3")]
+[node name="EyeEnemy5" parent="mob_test" unique_id=1046812573 instance=ExtResource("6_xj0t3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.995422, 5.96323, -13.784803)
 MAX_HEALTH = 5.0
 
-[node name="Sprite3D" type="AnimatedSprite3D" parent="." unique_id=2044892437]
+[node name="Sprite3D" type="AnimatedSprite3D" parent="mob_test" unique_id=2044892437]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 23.993801, 2.909761, 0.23227668)
 billboard = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_rml74")
 autoplay = "default"
 
-[node name="Sprite3D" type="Sprite3D" parent="Sprite3D" unique_id=1803500972]
-transform = Transform3D(-0.0003192434, 0.051780943, -0.9986584, -0.999981, -0.0061651515, 0, -0.0061568804, 0.9986394, 0.051781926, -0.091462135, 0, -1.2339363)
+[node name="Sprite3D" type="Sprite3D" parent="mob_test/Sprite3D" unique_id=1803500972]
+transform = Transform3D(-0.00024834462, 0.040281232, -0.7768726, -0.7779014, -0.0047959713, 0, -0.004789537, 0.7768578, 0.040282, -0.091462135, 0, -1.0808833)
 texture = ExtResource("8_avygb")
 
-[node name="Sprite3D2" type="Sprite3D" parent="Sprite3D" unique_id=2126113695]
-transform = Transform3D(-0.0040709535, 0.6603043, -0.75098705, -0.9999811, -0.006165152, 1.6448481e-10, -0.004629949, 0.75097287, 0.66031694, 0.87525034, 1.1920929e-07, 1.000514)
+[node name="Sprite3D2" type="Sprite3D" parent="mob_test/Sprite3D" unique_id=2126113695]
+transform = Transform3D(-0.0026851078, 0.43552163, -0.49533388, -0.6595647, -0.0040663932, 1.08490425e-10, -0.0030538086, 0.49532452, 0.43552995, 0.77354956, 1.1920929e-07, 0.7804968)
 flip_v = true
 texture = ExtResource("8_avygb")

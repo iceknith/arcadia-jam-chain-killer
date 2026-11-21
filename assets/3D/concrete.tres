@@ -1,10 +1,11 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://det4hyiljng7h"]
 
-[ext_resource type="Texture2D" uid="uid://bvtc1udbvhpor" path="res://assets/images/map/Concrete.jpg" id="1_nrdtm"]
+[ext_resource type="Texture2D" uid="uid://c0b28q380fayo" path="res://assets/images/map/concrete_test.png" id="1_nrdtm"]
 
 [resource]
 cull_mode = 2
 albedo_texture = ExtResource("1_nrdtm")
-uv1_scale = Vector3(0.02, 0.02, 0.02)
+uv1_scale = Vector3(0.021, 0.021, 0.021)
+uv1_offset = Vector3(0.5, 0.2, 0.8)
 uv1_triplanar = true
 texture_filter = 4
