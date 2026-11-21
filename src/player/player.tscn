@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://e5v1msdbivn8"]
+
+[ext_resource type="Script" uid="uid://7hn2hxfttba8" path="res://src/player/player.gd" id="1_4anbu"]
+[ext_resource type="PackedScene" uid="uid://b86j70vdxxrxu" path="res://src/player/playerUI.tscn" id="2_rxibo"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wu8kj"]
+
+[sub_resource type="Animation" id="Animation_rxibo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.7229739, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4anbu"]
+resource_name = "dash_crouch"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.7229739, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mf2ua"]
+resource_name = "dash_uncrouch"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0009999999, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.7229739, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rxibo"]
+_data = {
+&"RESET": SubResource("Animation_rxibo"),
+&"dash_crouch": SubResource("Animation_4anbu"),
+&"dash_uncrouch": SubResource("Animation_mf2ua")
+}
+
+[sub_resource type="SphereMesh" id="SphereMesh_wu8kj"]
+radius = 0.05
+height = 0.1
+
+[node name="Player" type="CharacterBody3D" unique_id=256785396]
+script = ExtResource("1_4anbu")
+FOV_SPEED_MULT = 3.0
+GRAPLING_HOOK_DISTANCE = 20.0
+GRAPLING_HOOK_MAX_SPEED = 20.0
+GRAPLING_HOOK_ACCELERATION_DURATION = 3.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=477971830]
+
+[node name="PlayerUi" parent="CanvasLayer" unique_id=1803843459 instance=ExtResource("2_rxibo")]
+unique_name_in_owner = true
+mouse_filter = 2
+BAR_HEIGHT = 5.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1584897913]
+shape = SubResource("CapsuleShape3D_wu8kj")
+
+[node name="Camera" type="Camera3D" parent="." unique_id=1190784633]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7229739, 0)
+
+[node name="GraplingHookRayCast" type="RayCast3D" parent="Camera" unique_id=1400462130]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=980152538]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27895606, 0)
+light_color = Color(2.3170373, 0.15757442, 0.63221365, 1)
+light_energy = 0.1
+
+[node name="CoyoteTimer" type="Timer" parent="." unique_id=1294997262]
+unique_name_in_owner = true
+wait_time = 0.5
+one_shot = true
+
+[node name="DashCooldown" type="Timer" parent="." unique_id=275610373]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="GraplingHookCooldown" type="Timer" parent="." unique_id=2052569928]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="CameraAnimator" type="AnimationPlayer" parent="." unique_id=603569710]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_rxibo")
+
+[node name="ChainOrigin" type="Marker3D" parent="." unique_id=1835769841]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17865473, 0.10504997, 0.15116507)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ChainOrigin" unique_id=301740171]
+visible = false
+mesh = SubResource("SphereMesh_wu8kj")
+metadata/_edit_lock_ = true

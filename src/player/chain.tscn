@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bgeunnqr4km15"]
+
+[ext_resource type="Texture2D" uid="uid://cgo6j1cn54txd" path="res://icon.svg" id="1_alq1k"]
+[ext_resource type="Script" uid="uid://b314527exvxca" path="res://src/player/chain.gd" id="2_rcg5i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ssmv3"]
+albedo_texture = ExtResource("1_alq1k")
+uv1_scale = Vector3(1, 5, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3vg6x"]
+material = SubResource("StandardMaterial3D_ssmv3")
+size = Vector2(0.2, 5)
+
+[node name="Chain" type="MeshInstance3D" unique_id=374670505]
+transform = Transform3D(1, 0, 0, 0, 0.9272965, 0.37432715, 0, -0.37432715, 0.9272965, 0, 0, 0)
+mesh = SubResource("PlaneMesh_3vg6x")
+script = ExtResource("2_rcg5i")
+
+[node name="DeleteTimer" type="Timer" parent="." unique_id=2113620352]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="DeleteTimer" to="." method="delete"]
