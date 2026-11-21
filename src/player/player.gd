@@ -139,6 +139,7 @@ func grab_handler() -> void:
 			%GraplingHookCooldown.start()
 			is_in_grab = false
 			direction = Vector3.ZERO
+			velocity.y = sqrt(velocity.y)
 			movement_tween.kill()
 			
 			%PlayerUi.on_ungrab()
@@ -160,7 +161,7 @@ func begin_grab_movement():
 	movement_tween.tween_property(self, 'current_speed', GRAB_MAX_SPEED, GRAB_ACCELERATION_DURATION)
 
 func attack_handler() -> void:
-	if Input.is_action_pressed('shoot') && chain == null:
+	if Input.is_action_pressed('shoot') && chain == null && %PlayerUi.can_shoot:
 		var collider = %ShootRayCast.get_collider()
 		is_grab_chain = false
 		if collider as Enemy:

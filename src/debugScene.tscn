@@ -8,7 +8,7 @@
 [node name="PlayerDebugScene" type="Node3D" unique_id=233034320]
 
 [node name="Player" parent="." unique_id=256785396 instance=ExtResource("1_fmhij")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5175567, 2.2285628, 1.1965113)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.83855, 2.2285628, -8.21027)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1370491774]
 environment = SubResource("Environment_fmhij")
@@ -17,3 +17,5 @@ environment = SubResource("Environment_fmhij")
 transform = Transform3D(1, 0, 0, 0, -0.544639, 0.8386705, 0, -0.8386705, -0.544639, 0, 0, 0)
 light_color = Color(0, 0.44313726, 0.39607844, 1)
 light_energy = 0.489
+
+[node name="map" parent="." unique_id=440204247 instance=ExtResource("3_05ll0")]

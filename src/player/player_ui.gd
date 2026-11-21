@@ -69,4 +69,4 @@ func _draw() -> void:
 func _process(_delta: float) -> void:
 	queue_redraw()
 	
-	can_shoot = $AnimatedSprite2D.animation == 'idle' && $AnimatedSprite2D.frame in [9, 10, 11]
+	can_shoot = $AnimatedSprite2D.animation == 'idle' && $AnimatedSprite2D.frame in [2,3, 8,9]
