@@ -45,7 +45,7 @@ billboard = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_au5t6")
 autoplay = "default"
-frame_progress = 0.75858164
+frame_progress = 0.346468
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1088700233]
 collision_layer = 0
