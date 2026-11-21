@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cd5ds6my86q0y" path="res://assets/images/enemy/heart1.png" id="3_y0qss"]
 [ext_resource type="Texture2D" uid="uid://cdowt2r6lobs6" path="res://assets/images/enemy/heart2.png" id="4_2ayys"]
 [ext_resource type="Texture2D" uid="uid://dm260ogyxu50h" path="res://assets/images/enemy/boss_chain.png" id="5_2ayys"]
+[ext_resource type="AudioStream" uid="uid://8nep3vg42c4e" path="res://assets/sound/processed/enemy_hit.mp3" id="6_uhpws"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_637yn"]
 animations = [{
@@ -19,7 +20,6 @@ animations = [{
 "name": &"default",
 "speed": 2.0
 }]
-[ext_resource type="AudioStream" uid="uid://8nep3vg42c4e" path="res://assets/sound/processed/enemy_hit.mp3" id="4_y0qss"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d0l2c"]
 size = Vector3(5.3, 6, 5.3)
@@ -168,5 +168,5 @@ shape = SubResource("SphereShape3D_wu8kj")
 disabled = true
 
 [node name="DamageStreamPlayer" type="AudioStreamPlayer3D" parent="." unique_id=189929746]
-stream = ExtResource("4_y0qss")
+stream = ExtResource("6_uhpws")
 volume_db = 6.0
