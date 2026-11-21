@@ -20,11 +20,19 @@ extends CharacterBody3D
 @export var MIN_FOV:float = 75
 @export var FOV_SPEED_MULT:float = 0.5
 
-@export_group('GrapplingHook')
-@export var GRAPLING_HOOK_DISTANCE:float = 30
-@export var GRAPLING_HOOK_RELEASE_DISTANCE:float = 0.5
-@export var GRAPLING_HOOK_MAX_SPEED:float = 30
-@export var GRAPLING_HOOK_ACCELERATION_DURATION:float = 2
+@export_group('Grab')
+@export var GRAB_DISTANCE:float = 30
+@export var GRAB_RELEASE_DISTANCE:float = 0.5
+@export var GRAB_MAX_SPEED:float = 30
+@export var GRAB_ACCELERATION_DURATION:float = 2
+@export var GRAB_DAMAGE:float = 3
+
+@export_group('Attack')
+@export var SHOOT_DAMAGE:float = 2
+@export var SHOOT_MAX_DISTANCE:float = 100
+@export var SHOOT_LAUNCH_SPEED_MULT:float = 2
+
+const chain_scene := preload('res://src/player/chain.tscn')
 
 var current_speed := SPEED
 var current_acceleration := FLOOR_ACCELERATION
@@ -35,21 +43,26 @@ var movement_tween: Tween
 var is_dashing := false
 
 var chain:Chain
-var is_in_chain := false
+var is_grab_chain:bool
+
+var is_in_grab := false
 var chain_goal_enemy:Enemy
 var chain_goal_pos:Vector3
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	%GraplingHookRayCast.target_position.z = -GRAPLING_HOOK_DISTANCE
+	%GraplingHookRayCast.target_position.z = -GRAB_DISTANCE
+	%ShootRayCast.target_position.z = -SHOOT_MAX_DISTANCE
 
 func _process(delta: float) -> void:
 	%Camera.fov = lerp(%Camera.fov, MIN_FOV + velocity.length() * FOV_SPEED_MULT, 5 * delta)
+	
+	attack_handler()
 
 func _physics_process(delta: float) -> void:
 	coyote_time_handler()
 	dash_handler()
-	chain_handler()
+	grab_handler()
 	movement_handler(delta)
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -87,40 +100,44 @@ func dash_handler() -> void:
 		is_dashing = false
 		movement_tween.kill()
 
-func chain_handler() -> void:
+func grab_handler() -> void:
 	var collider = %GraplingHookRayCast.get_collider()
 	if collider != null && %GraplingHookCooldown.is_stopped() && chain == null:
 		if Input.is_action_just_pressed("grab"):
 			if collider as Enemy:
 				chain_goal_enemy = collider
+				chain_goal_enemy.is_grabbed()
 			else:
 				chain_goal_enemy = null
 				chain_goal_pos = %GraplingHookRayCast.get_collision_point()
+			is_grab_chain = true
 			%PlayerUi.on_grab()
 			
-			chain = preload('res://src/player/chain.tscn').instantiate()
+			chain = chain_scene.instantiate()
 			chain.player = self
 			if collider as Enemy:
 				chain.goal_enemy = chain_goal_enemy
 			else:
 				chain.goal_pos = chain_goal_pos
-			chain.grab.connect(begin_chain_movement)
+			chain.contact.connect(begin_grab_movement)
 			get_parent().add_child(chain)
 		else:
 			%PlayerUi.on_can_grab()
 	else:
 		%PlayerUi.on_cannot_grab()
 	
-	if is_in_chain:
+	if is_in_grab:
 		var goal_pos := chain_goal_enemy.global_position if chain_goal_enemy != null else chain_goal_pos 
-		var force_release := global_position.distance_squared_to(goal_pos) < GRAPLING_HOOK_RELEASE_DISTANCE
+		var force_release := global_position.distance_squared_to(goal_pos) < GRAB_RELEASE_DISTANCE ** 2
 		
 		if Input.is_action_just_released("grab") || force_release:
 			if force_release:
 				current_speed = SPEED
-				# TODO add damage here
+				if chain_goal_enemy != null:
+					chain_goal_enemy.damage(GRAB_DAMAGE)
+				
 			%GraplingHookCooldown.start()
-			is_in_chain = false
+			is_in_grab = false
 			direction = Vector3.ZERO
 			movement_tween.kill()
 			
@@ -130,13 +147,46 @@ func chain_handler() -> void:
 		else:
 			direction = global_position.direction_to(goal_pos)
 			velocity = direction * current_speed
+	elif chain != null:
+		if Input.is_action_just_released("grab"):
+			chain.delete()
+			chain = null
 
-func begin_chain_movement():
-	is_in_chain = true
+func begin_grab_movement():
+	is_in_grab = true
 	if movement_tween: movement_tween.kill()
 	movement_tween = create_tween()
 	movement_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
-	movement_tween.tween_property(self, 'current_speed', GRAPLING_HOOK_MAX_SPEED, GRAPLING_HOOK_ACCELERATION_DURATION)
+	movement_tween.tween_property(self, 'current_speed', GRAB_MAX_SPEED, GRAB_ACCELERATION_DURATION)
+
+func attack_handler() -> void:
+	if Input.is_action_pressed('shoot') && chain == null:
+		var collider = %ShootRayCast.get_collider()
+		is_grab_chain = false
+		if collider as Enemy:
+			chain_goal_enemy = collider
+		else:
+			chain_goal_enemy = null
+			chain_goal_pos = %ShootRayCast.get_collision_point()
+			if chain_goal_pos == global_position:
+				chain_goal_pos += %ShootRayCast.target_position
+			
+		%PlayerUi.on_shoot()
+	
+		chain = chain_scene.instantiate()
+		chain.player = self
+		if collider as Enemy:
+			chain.goal_enemy = chain_goal_enemy
+		else:
+			chain.goal_pos = chain_goal_pos
+		chain.deleted.connect(func (): chain = null)
+		chain.contact.connect(on_attack_land)
+		get_parent().add_child(chain)
+
+func on_attack_land():
+	if chain_goal_enemy != null:
+		chain_goal_enemy.damage(SHOOT_DAMAGE)
+	chain.retract()
 
 func movement_handler(delta:float) -> void :
 	if !is_gravity_overrided():
@@ -175,22 +225,22 @@ func movement_handler(delta:float) -> void :
 ### CONSTS FUNCS ###
 
 func is_gravity_overrided() -> bool:
-	return is_in_chain
+	return is_in_grab
 
 func is_speed_overrided() -> bool:
-	return is_dashing || is_in_chain
+	return is_dashing || is_in_grab
 
 func is_direction_overrided() -> bool:
-	return is_in_chain
+	return is_in_grab
 
 func is_movement_overrided() -> bool:
-	return is_in_chain
+	return is_in_grab
 
 func is_acceleration_overrided() -> bool:
-	return is_dashing || is_in_chain
+	return is_dashing || is_in_grab
 
 func is_velocity_overrided() -> bool:
-	return is_in_chain
+	return is_in_grab
 
 func get_chain_origin() -> Vector3:
-	return %ChainOrigin.global_position
+	return %GrabOrigin.global_position if is_grab_chain else %AttackOrigin.global_position

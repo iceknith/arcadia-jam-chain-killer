@@ -10,6 +10,7 @@ class_name PlayerUI
 
 var grab:bool
 var can_grab:bool
+var can_shoot:bool = false
 
 func _ready() -> void:
 	$AnimationPlayer.play_backwards("can_grab")
@@ -67,3 +68,5 @@ func _draw() -> void:
 
 func _process(_delta: float) -> void:
 	queue_redraw()
+	
+	can_shoot = $AnimatedSprite2D.animation == 'idle' && $AnimatedSprite2D.frame in [9, 10, 11]

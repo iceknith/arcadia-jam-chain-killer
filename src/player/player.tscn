@@ -66,9 +66,6 @@ height = 0.1
 [node name="Player" type="CharacterBody3D" unique_id=256785396]
 script = ExtResource("1_4anbu")
 FOV_SPEED_MULT = 3.0
-GRAPLING_HOOK_DISTANCE = 20.0
-GRAPLING_HOOK_MAX_SPEED = 20.0
-GRAPLING_HOOK_ACCELERATION_DURATION = 3.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=477971830]
 
@@ -85,6 +82,10 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7229739, 0)
 
 [node name="GraplingHookRayCast" type="RayCast3D" parent="Camera" unique_id=1400462130]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, 0)
+
+[node name="ShootRayCast" type="RayCast3D" parent="Camera" unique_id=1710378985]
 unique_name_in_owner = true
 target_position = Vector3(0, 0, 0)
 
@@ -110,11 +111,20 @@ one_shot = true
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_rxibo")
 
-[node name="ChainOrigin" type="Marker3D" parent="." unique_id=1835769841]
+[node name="GrabOrigin" type="Marker3D" parent="." unique_id=1835769841]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17865473, 0.10504997, 0.15116507)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ChainOrigin" unique_id=301740171]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GrabOrigin" unique_id=301740171]
+visible = false
+mesh = SubResource("SphereMesh_wu8kj")
+metadata/_edit_lock_ = true
+
+[node name="AttackOrigin" type="Marker3D" parent="." unique_id=1650400463]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17865473, 0.10504997, 0.15116507)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AttackOrigin" unique_id=573618346]
 visible = false
 mesh = SubResource("SphereMesh_wu8kj")
 metadata/_edit_lock_ = true

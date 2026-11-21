@@ -59,7 +59,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_1mpd4"]
 resource_name = "on_grab"
-length = 0.19999999999999998
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -125,12 +125,6 @@ _data = {
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_oavrf")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_av67y")
-}, {
-"duration": 1.0,
 "texture": ExtResource("5_pdhsa")
 }, {
 "duration": 1.0,
@@ -159,9 +153,15 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("2_1mpd4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_oavrf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_av67y")
 }],
 "loop": 1,
-"name": &"default",
+"name": &"idle",
 "speed": 6.0
 }]
 
@@ -183,5 +183,5 @@ libraries/ = SubResource("AnimationLibrary_jxpd4")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1004241262]
 position = Vector2(481, 271)
 sprite_frames = SubResource("SpriteFrames_wu8kj")
-autoplay = "default"
-frame_progress = 0.22054422
+animation = &"idle"
+autoplay = "idle"
