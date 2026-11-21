@@ -6,6 +6,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ssmv3"]
 transparency = 1
 cull_mode = 2
+no_depth_test = true
 albedo_texture = ExtResource("1_rcg5i")
 uv1_scale = Vector3(1, 3, 1)
 

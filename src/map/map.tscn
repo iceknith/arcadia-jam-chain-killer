@@ -36,7 +36,7 @@ data = PackedVector3Array(20.7107, 222.5022, -28.028399, 26.8198, 234.7204, -28.
 
 [node name="map" unique_id=440204247 instance=ExtResource("1_5o7fj")]
 
-[node name="room2" parent="." index="1" unique_id=1871266079]
+[node name="room2" parent="." index="1" unique_id=217104189]
 material_override = ExtResource("2_vfn15")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="room2" index="0" unique_id=697889878]
@@ -44,7 +44,7 @@ material_override = ExtResource("2_vfn15")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="room2/StaticBody3D" index="0" unique_id=870505512]
 shape = SubResource("ConcavePolygonShape3D_vfn15")
 
-[node name="stairs" parent="." index="2" unique_id=1225227246]
+[node name="stairs" parent="." index="2" unique_id=1580170317]
 material_override = ExtResource("2_vfn15")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="stairs" index="0" unique_id=1432209644]
@@ -60,7 +60,7 @@ mesh = SubResource("ArrayMesh_wb0hv")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stairs/MeshInstance3D/StaticBody3D" index="0" unique_id=1321972073]
 shape = SubResource("ConcavePolygonShape3D_fr2qc")
 
-[node name="room3" parent="." index="3" unique_id=971225918]
+[node name="room3" parent="." index="3" unique_id=1301123305]
 material_override = ExtResource("2_vfn15")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="room3" index="0" unique_id=1982408775]
@@ -68,7 +68,7 @@ material_override = ExtResource("2_vfn15")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="room3/StaticBody3D" index="0" unique_id=446583527]
 shape = SubResource("ConcavePolygonShape3D_4cvdr")
 
-[node name="room1" parent="." index="4" unique_id=51664131]
+[node name="room1" parent="." index="4" unique_id=78655839]
 material_override = ExtResource("2_vfn15")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="room1" index="0" unique_id=1615280263]
@@ -76,7 +76,7 @@ material_override = ExtResource("2_vfn15")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="room1/StaticBody3D" index="0" unique_id=1789847289]
 shape = SubResource("ConcavePolygonShape3D_wb0hv")
 
-[node name="boss" parent="." index="5" unique_id=271865526]
+[node name="boss" parent="." index="5" unique_id=1151767401]
 material_override = ExtResource("2_vfn15")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="boss" index="0" unique_id=1529250374]
@@ -84,5 +84,5 @@ material_override = ExtResource("2_vfn15")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="boss/StaticBody3D2" index="0" unique_id=475259905]
 shape = SubResource("ConcavePolygonShape3D_cti7x")
 
-[node name="Grid" parent="." index="6" unique_id=1846360324]
+[node name="Grid" parent="." index="6" unique_id=1385358764]
 material_override = ExtResource("2_vfn15")

@@ -2,7 +2,23 @@
 
 [ext_resource type="Script" uid="uid://bmw7c7iip7tgm" path="res://src/enemies/boss/boss.gd" id="1_cumcl"]
 [ext_resource type="PackedScene" uid="uid://bkp1vkxo2div" path="res://src/enemies/dummy/dummyEnemy.tscn" id="2_d0l2c"]
-[ext_resource type="Texture2D" uid="uid://cgo6j1cn54txd" path="res://icon.svg" id="2_wh6x1"]
+[ext_resource type="Texture2D" uid="uid://cd5ds6my86q0y" path="res://assets/images/enemy/heart1.png" id="3_y0qss"]
+[ext_resource type="Texture2D" uid="uid://cdowt2r6lobs6" path="res://assets/images/enemy/heart2.png" id="4_2ayys"]
+[ext_resource type="Texture2D" uid="uid://dm260ogyxu50h" path="res://assets/images/enemy/boss_chain.png" id="5_2ayys"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_637yn"]
+animations = [{
+"frames": [{
+"duration": 2.5,
+"texture": ExtResource("3_y0qss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2ayys")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 2.0
+}]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d0l2c"]
 size = Vector3(5.3, 6, 5.3)
@@ -41,12 +57,66 @@ DAMAGE_FLICKER_COUNT = 1
 GRABBED_COLOR = Color(0.81325716, 0.81325793, 0.813257, 1)
 metadata/_custom_type_script = "uid://cyly0r0q3b0st"
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=967664978]
+[node name="Sprite3D" type="AnimatedSprite3D" parent="." unique_id=1102033929]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2177994, 0)
 pixel_size = 0.05
 billboard = 2
 texture_filter = 0
-texture = ExtResource("2_wh6x1")
+sprite_frames = SubResource("SpriteFrames_637yn")
+autoplay = "default"
+frame_progress = 0.25263464
+
+[node name="Chains" type="Node3D" parent="Sprite3D" unique_id=1648734673]
+
+[node name="Sprite3D" type="Sprite3D" parent="Sprite3D/Chains" unique_id=790759795]
+transform = Transform3D(4.3650246, 2.4385571, 0, -2.4385571, 4.3650246, 0, 0, 0, 5, -1.8595011, -7.4583435, 0)
+alpha_cut = 1
+texture = ExtResource("5_2ayys")
+
+[node name="Sprite3D" type="Sprite3D" parent="Sprite3D/Chains/Sprite3D" unique_id=1446047012]
+transform = Transform3D(0.93622565, 0.35140017, 0, -0.35140017, 0.93622565, 0, 0, 0, 1, 0.058361053, -1.2796887, -0.0066315173)
+alpha_cut = 1
+texture = ExtResource("5_2ayys")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Sprite3D/Chains" unique_id=80737898]
+transform = Transform3D(2.064281, 0.94016325, 4.455878, -2.1254473, 4.525659, 0.029772438, -4.027558, -1.9064379, 2.2680995, -0.4777422, -7.545866, 1.7052879)
+alpha_cut = 1
+texture = ExtResource("5_2ayys")
+
+[node name="Sprite3D" type="Sprite3D" parent="Sprite3D/Chains/Sprite3D2" unique_id=2038673383]
+transform = Transform3D(0.93622565, 0.35140017, 0, -0.35140017, 0.93622565, 0, 0, 0, 1, 0.058361053, -1.2796887, -0.0066315173)
+alpha_cut = 1
+texture = ExtResource("5_2ayys")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Sprite3D/Chains" unique_id=1292864213]
+transform = Transform3D(-4.156472, -2.4900246, 1.2343097, -2.546034, 4.3019433, 0.10485618, -1.1142045, -0.541353, -4.8441186, 2.1240606, -7.3393803, 0.91448784)
+alpha_cut = 1
+texture = ExtResource("5_2ayys")
+
+[node name="Sprite3D" type="Sprite3D" parent="Sprite3D/Chains/Sprite3D3" unique_id=317438731]
+transform = Transform3D(0.93622565, 0.35140017, 0, -0.35140017, 0.93622565, 0, 0, 0, 1, 0.058361053, -1.2796887, -0.0066315173)
+alpha_cut = 1
+texture = ExtResource("5_2ayys")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Sprite3D/Chains" unique_id=1003936134]
+transform = Transform3D(-2.2015216, -1.4296379, -4.255519, -2.4506228, 4.353902, -0.19490035, 3.761349, 1.9999198, -2.6177423, 1.2219723, -7.323551, -1.5917153)
+alpha_cut = 1
+texture = ExtResource("5_2ayys")
+
+[node name="Sprite3D" type="Sprite3D" parent="Sprite3D/Chains/Sprite3D4" unique_id=1881770813]
+transform = Transform3D(0.93622565, 0.35140017, 0, -0.35140017, 0.93622565, 0, 0, 0, 1, 0.058361053, -1.2796887, -0.0066315173)
+alpha_cut = 1
+texture = ExtResource("5_2ayys")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Sprite3D/Chains" unique_id=1086083914]
+transform = Transform3D(2.1549485, 1.3543159, -4.303722, -2.6629782, 4.2318482, -0.0017013997, 3.6420789, 2.292878, 2.5451856, -1.3354857, -7.720998, -1.4555383)
+alpha_cut = 1
+texture = ExtResource("5_2ayys")
+
+[node name="Sprite3D" type="Sprite3D" parent="Sprite3D/Chains/Sprite3D5" unique_id=400909990]
+transform = Transform3D(0.93622565, 0.35140017, 0, -0.35140017, 0.93622565, 0, 0, 0, 1, 0.058361053, -1.2796887, -0.0066315173)
+alpha_cut = 1
+texture = ExtResource("5_2ayys")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=4248301]
 collision_layer = 0

@@ -36,6 +36,7 @@ collision_layer = 4
 script = ExtResource("1_au5t6")
 detection_range = NodePath("DetectionRange")
 contact_damage_area = NodePath("Area3D")
+MAX_HEALTH = 4.0
 sprite = NodePath("Sprite3D")
 metadata/_custom_type_script = "uid://m42myfffckyh"
 
@@ -45,7 +46,7 @@ billboard = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_au5t6")
 autoplay = "default"
-frame_progress = 0.346468
+frame_progress = 0.106634796
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1088700233]
 collision_layer = 0
