@@ -307,9 +307,11 @@ func damage(dealt_damage:float, source:Vector3 = Vector3.ZERO) -> void:
 	
 	damage_animation_force = 1.0
 	health -= dealt_damage
+	Globals.damage_taken += dealt_damage
 	%DamageSoundPlayer.play()
 	
 	if health <= 0:
+		Globals.death += 1
 		death_animation()
 	else:
 		if (is_in_grab):
