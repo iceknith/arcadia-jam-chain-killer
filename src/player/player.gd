@@ -48,6 +48,8 @@ extends CharacterBody3D
 @export var AIR_VOLUME_SPEED_SCALE:float = 1
 
 const chain_scene := preload('res://src/player/chain.tscn')
+const flan_scene := preload('res://assets/3D/flan/flan.tscn')
+var flan:RigidBody3D
 
 var current_speed := SPEED
 var current_acceleration := FLOOR_ACCELERATION

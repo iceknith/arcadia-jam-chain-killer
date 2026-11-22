@@ -81,6 +81,7 @@ esc={
 3d_physics/layer_2="player"
 3d_physics/layer_3="enemies"
 3d_physics/layer_4="triggerZones"
+3d_physics/layer_5="flan"
 
 [physics]
 

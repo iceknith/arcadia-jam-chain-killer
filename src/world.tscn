@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://ba75maxot166" path="res://assets/images/tag/tag7.png" id="12_8kjpi"]
 [ext_resource type="Texture2D" uid="uid://c455dhv43gi2o" path="res://assets/images/tag/tag3.png" id="12_eemcn"]
 [ext_resource type="Texture2D" uid="uid://cjqg33juqx7pj" path="res://assets/images/tag/tag2.png" id="13_njovb"]
+[ext_resource type="Texture2D" uid="uid://cxjd6nevwhykh" path="res://assets/images/tag/title.png" id="13_th6lv"]
 [ext_resource type="Texture2D" uid="uid://bh2m5h2cwwlsj" path="res://assets/images/tag/nicetag.png" id="14_yyjdi"]
 [ext_resource type="Texture2D" uid="uid://cu2kcsfq0ci5s" path="res://assets/images/tag/eyetag.png" id="15_vmuob"]
 [ext_resource type="Texture2D" uid="uid://dl8aaiobf5ik" path="res://assets/images/tag/flan.png" id="18_00gdp"]
@@ -147,7 +148,7 @@ debug_color = Color(0.801869, 0.7604822, 0, 0.42000002)
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.452736, -1.62853, -0.88201106)
 
 [node name="Player" parent="." unique_id=256785396 instance=ExtResource("1_4ep41")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 121.21097, -9.592614, -1.9625123)
+transform = Transform3D(0.8983497, 0, -0.43928126, 0, 1, 0, 0.43928126, 0, 0.8983497, 121.21097, -9.592614, -1.9625123)
 
 [node name="BossSpawnMarkers" type="Node3D" parent="." unique_id=860179678]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100.83079, -306.88602, 254.57666)
@@ -418,6 +419,11 @@ transform = Transform3D(-1.3113416e-07, 0, -3, 0, 3, 0, 3, 0, -1.3113416e-07, 10
 flip_h = true
 texture = ExtResource("9_dotkg")
 
+[node name="Sprite3D17" type="Sprite3D" parent="Tag" unique_id=149377208]
+transform = Transform3D(-2.2, 0, 3.3219078e-07, 0, 2.2, 0, -3.3219078e-07, 0, -2.2, 122.945724, -7.7166066, -13.980714)
+flip_h = true
+texture = ExtResource("13_th6lv")
+
 [node name="Sprite3D9" type="Sprite3D" parent="Tag" unique_id=1843897218]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 49.117493, 2.436091, 19.9156)
 flip_h = true
@@ -452,7 +458,7 @@ transform = Transform3D(-1.3113416e-07, 0, -3, 0, 3, 0, 3, 0, -1.3113416e-07, 13
 texture = ExtResource("9_8e6n3")
 
 [node name="Sprite3D4" type="Sprite3D" parent="Tag" unique_id=487198634]
-transform = Transform3D(-3, 0, 2.6226832e-07, 0, 3, 0, -2.6226832e-07, 0, -3, 122.38058, 1.5509156, -13.736787)
+transform = Transform3D(-3, 0, 2.6226832e-07, 0, 3, 0, -2.6226832e-07, 0, -3, 122.14913, 2.3982058, -13.736787)
 flip_h = true
 texture = ExtResource("12_eemcn")
 
