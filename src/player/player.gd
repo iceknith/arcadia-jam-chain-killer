@@ -81,6 +81,10 @@ func _ready() -> void:
 	
 	Globals.sensitivity = LOOK_SENSITIVITY
 	Globals.sensitivity_change.connect(func (new_sensi): LOOK_SENSITIVITY = new_sensi)
+	
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
+	tween.tween_property(%PlayerUi, 'modulate', Color.WHITE, 0.3)
 
 func _process(delta: float) -> void:
 	var velocity_speed := velocity.length()

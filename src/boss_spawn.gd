@@ -5,4 +5,4 @@ func _ready() -> void:
 
 func on_body_entered(body:Node3D):
 	if body as Player:
-		Globals.startBossFight.emit()
+		Globals.startBossIntro.emit()

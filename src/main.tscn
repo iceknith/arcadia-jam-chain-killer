@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://c3pnwt06tvi5r" path="res://src/gui/main_menu.tscn" id="3_5q4o7"]
 [ext_resource type="AudioStream" uid="uid://du8wu6jl6goal" path="res://assets/sound/Boss_Fight.mp3" id="4_fyndt"]
 [ext_resource type="AudioStream" uid="uid://g6s647s0ul5e" path="res://assets/sound/Ambiant.mp3" id="4_rlaii"]
-[ext_resource type="AudioStream" uid="uid://bjdnlns0rekli" path="res://assets/sound/Boss_Entrance.mp3" id="5_5mrjc"]
 [ext_resource type="AudioStream" uid="uid://cda0wox2iweer" path="res://assets/sound/Boss Dying.mp3" id="5_kmhfv"]
+[ext_resource type="AudioStream" uid="uid://8wjl16u8a4ym" path="res://assets/sound/processed/Boss_Entrance.mp3" id="5_rlaii"]
 
 [node name="Main" type="Node" unique_id=286117844]
 script = ExtResource("1_gh0ne")
@@ -24,7 +24,7 @@ volume_db = 15.0
 autoplay = true
 
 [node name="BossEntrance" type="AudioStreamPlayer" parent="." unique_id=1363663280]
-stream = ExtResource("5_5mrjc")
+stream = ExtResource("5_rlaii")
 volume_db = 10.0
 
 [node name="BossFight" type="AudioStreamPlayer" parent="." unique_id=2004225857]
