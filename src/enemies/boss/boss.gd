@@ -32,7 +32,8 @@ const pillar_scene = preload('res://src/enemies/boss/pillar.tscn')
 @export var enemies_boss_max_distance_y:float = 20
 @export var player_min_distance:float = 10
 @export var enemies:Array[PackedScene]
-@export var MOB_AMOUNT:int = 20
+@export var MOB_AMOUNT:int = 3
+@export var MAX_MOB_AMOUNT:int = 6
 
 @onready var default_pos = global_position
 
@@ -42,6 +43,7 @@ var phase:int = 0
 var attack:String 
 
 var pillar_count:int 
+var mob_count:int = 0
 
 func _ready():
 	super()
@@ -57,15 +59,15 @@ func _on_detection_range_entered(body:Node3D):
 		$IdleTimer.start()
 
 func launch_attack():
-	var tween := create_tween()
-	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
-	tween.tween_property(self, 'global_position', default_pos + ATTACK_HEIGHT * Vector3.UP, ATTACK_TRANSITION_TIME)
-	await tween.finished
-	
 	attack = attacks[phase].pick_random()
-	$AttackTimer.start()
-	launch_spawn_enemies()
 	
+	if attack != 'spawn_enemies':
+		var tween := create_tween()
+		tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+		tween.tween_property(self, 'global_position', default_pos + ATTACK_HEIGHT * Vector3.UP, ATTACK_TRANSITION_TIME)
+		await tween.finished
+	
+	$AttackTimer.start()
 	if attack == 'bullets':
 		launch_bullets()
 	elif attack == 'laser':
@@ -83,6 +85,7 @@ func launch_laser():
 func launch_bullets():
 	for i in bullets_wave_amount:
 		var radius := i%2 * PI / float(bullets_per_wave)
+		$ShootStreamPlayer.play()
 		for _i in bullets_per_wave:
 			radius += 2 * PI / float(bullets_per_wave)
 			var bullet:BulletEnemy = boss_bullet_scene.instantiate()
@@ -100,27 +103,23 @@ func launch_bullets():
 
 func launch_spawn_enemies():
 	for _i in MOB_AMOUNT:
-		var enemy:Enemy = enemies.pick_random().instantiate()
-		enemy.position = player.global_position
-		while player.global_position.distance_squared_to(enemy.position) <= player_min_distance ** 2:
-			var distance := randf_range(enemies_boss_min_distance, enemies_boss_max_distance)
-			var pos2d := Vector2.from_angle(randf_range(-PI, PI)) * distance
-			var height := enemies_boss_max_distance_y * randf_range(-1, 1)
-			enemy.position = Vector3(pos2d.x, height, pos2d.y) + global_position
-		
-		get_parent().add_child(enemy)
-		await get_tree().create_timer($AttackTimer.wait_time / MOB_AMOUNT).timeout 
+		if (mob_count <= MAX_MOB_AMOUNT):
+			mob_count += 1
+			var enemy:Enemy = enemies.pick_random().instantiate()
+			enemy.position = player.global_position
+			while player.global_position.distance_squared_to(enemy.position) <= player_min_distance ** 2:
+				var distance := randf_range(enemies_boss_min_distance, enemies_boss_max_distance)
+				var pos2d := Vector2.from_angle(randf_range(-PI, PI)) * distance
+				var height := enemies_boss_max_distance_y * randf_range(-1, 1)
+				enemy.position = Vector3(pos2d.x, height, pos2d.y) + global_position
+				enemy.die.connect(func(): mob_count -= 1)
+			
+			get_parent().add_child(enemy)
+			await get_tree().create_timer($AttackTimer.wait_time / MOB_AMOUNT).timeout 
 
 func on_attack_end():
 	var tween := create_tween()
 	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
-	
-	if attack == 'bullets':
-		launch_bullets()
-	elif attack == 'laser':
-		launch_laser()
-	elif attack == 'spawn_enemies':
-		launch_spawn_enemies()
 	tween.tween_property(self, 'global_position', default_pos, ATTACK_TRANSITION_TIME)
 	await tween.finished
 	
@@ -134,12 +133,19 @@ func damage(damage_delt:float):
 		launch_phase_2()
 
 func launch_phase_2():
+	$AttackTimer.stop()
+	$IdleTimer.stop()
+	
 	pillar_count = pillar_spawn_locations.size()
 	for marker in pillar_spawn_locations:
 		var pillar:Enemy = pillar_scene.instantiate()
 		pillar.position = marker.global_position
 		pillar.die.connect(_on_pillar_destroyed)
 		get_parent().add_child(pillar)
+	
+	var player_kb_direction := global_position.direction_to(player.global_position)
+	player.knockback_speed = Vector2(player_kb_direction.x, player_kb_direction.z) * 50
+	player.velocity.y = 18
 	
 	%ShieldCollisionShape.disabled = false
 	var tween := create_tween()

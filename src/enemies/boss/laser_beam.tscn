@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bojphk0vanr0x"]
 
 [ext_resource type="Script" uid="uid://br2dk164adduj" path="res://src/enemies/boss/laser_beam.gd" id="1_k0vup"]
+[ext_resource type="AudioStream" uid="uid://dg8hl1o0loo0q" path="res://assets/sound/pulling_chain.mp3" id="2_rs7m5"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_wu8kj"]
 height = 100.0
@@ -28,3 +29,10 @@ shape = SubResource("CylinderShape3D_wu8kj")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=989298102]
 transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, -50)
 mesh = SubResource("CylinderMesh_wu8kj")
+
+[node name="LazerStreamPlayer" type="AudioStreamPlayer3D" parent="." unique_id=275933187]
+stream = ExtResource("2_rs7m5")
+attenuation_model = 2
+volume_db = 40.0
+pitch_scale = 0.2
+autoplay = true

@@ -32,6 +32,7 @@ func _physics_process(delta: float) -> void:
 	velocity = lerp(velocity, direction * SPEED, ACCELERATION * delta)
 	endPoint += velocity * delta
 	
+	$LazerStreamPlayer.global_position = endPoint
 	global_position = startPoint
 	look_at(endPoint)
 

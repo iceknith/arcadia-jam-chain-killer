@@ -131,6 +131,7 @@ func grab_handler() -> void:
 			if collider as Enemy:
 				chain_goal_enemy = collider
 				chain_goal_enemy.grab()
+				%InvincibilityCooldown.start()
 			else:
 				chain_goal_enemy = null
 				chain_goal_pos = %GraplingHookRayCast.get_collision_point()
@@ -153,6 +154,9 @@ func grab_handler() -> void:
 	if is_in_grab:
 		var goal_pos := chain_goal_enemy.global_position if chain_goal_enemy != null else chain_goal_pos 
 		var force_release := global_position.distance_squared_to(goal_pos) < GRAB_RELEASE_DISTANCE ** 2
+		
+		if chain_goal_enemy != null:
+			%InvincibilityCooldown.start()
 		
 		if Input.is_action_just_released("grab") || force_release:
 			ungrab(force_release)

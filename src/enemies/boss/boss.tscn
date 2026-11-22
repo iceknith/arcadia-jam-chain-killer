@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://cqtqbc6y456v5"]
 
 [ext_resource type="Script" uid="uid://bmw7c7iip7tgm" path="res://src/enemies/boss/boss.gd" id="1_cumcl"]
-[ext_resource type="PackedScene" uid="uid://bkp1vkxo2div" path="res://src/enemies/dummy/dummyEnemy.tscn" id="2_d0l2c"]
+[ext_resource type="PackedScene" uid="uid://7exa08nn64f3" path="res://src/enemies/turret/turret_enemy.tscn" id="2_nqxef"]
+[ext_resource type="PackedScene" uid="uid://bn0edosvjbxoc" path="res://src/enemies/flying/flyingEnemy.tscn" id="3_05ac0"]
 [ext_resource type="Texture2D" uid="uid://cd5ds6my86q0y" path="res://assets/images/enemy/heart1.png" id="3_y0qss"]
 [ext_resource type="Texture2D" uid="uid://cdowt2r6lobs6" path="res://assets/images/enemy/heart2.png" id="4_2ayys"]
 [ext_resource type="Texture2D" uid="uid://dm260ogyxu50h" path="res://assets/images/enemy/boss_chain.png" id="5_2ayys"]
 [ext_resource type="AudioStream" uid="uid://8nep3vg42c4e" path="res://assets/sound/processed/enemy_hit.mp3" id="6_uhpws"]
+[ext_resource type="AudioStream" uid="uid://csg4k233alhre" path="res://assets/sound/processed/enemy_shooting.mp3" id="7_e3apt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_637yn"]
 animations = [{
@@ -48,10 +50,10 @@ script = ExtResource("1_cumcl")
 bullets_per_wave = 30
 enemies_boss_max_distance = 40.0
 enemies_boss_max_distance_y = 10.0
-enemies = Array[PackedScene]([ExtResource("2_d0l2c")])
-MOB_AMOUNT = 3
+enemies = Array[PackedScene]([ExtResource("2_nqxef"), ExtResource("3_05ac0"), ExtResource("3_05ac0"), ExtResource("3_05ac0")])
 contact_damage_area = NodePath("Area3D")
 damage_sound_player = NodePath("DamageStreamPlayer")
+MAX_HEALTH = 50.0
 sprite = NodePath("Sprite3D")
 DAMAGE_COLOR_1 = Color(1, 0.59819686, 0.5539304, 1)
 DAMAGE_COLOR_2 = Color(1, 0.37799087, 0.31005043, 1)
@@ -170,3 +172,9 @@ disabled = true
 [node name="DamageStreamPlayer" type="AudioStreamPlayer3D" parent="." unique_id=189929746]
 stream = ExtResource("6_uhpws")
 volume_db = 6.0
+
+[node name="ShootStreamPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1066048889]
+stream = ExtResource("7_e3apt")
+attenuation_model = 2
+volume_db = 20.0
+pitch_scale = 0.6
