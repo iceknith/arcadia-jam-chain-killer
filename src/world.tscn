@@ -14,12 +14,15 @@
 [ext_resource type="Texture2D" uid="uid://b41kx834ihawg" path="res://assets/images/tag/tag8.png" id="10_5xesp"]
 [ext_resource type="Texture2D" uid="uid://j3kx2b0lo26i" path="res://assets/images/tag/tag6.png" id="10_a3wil"]
 [ext_resource type="Texture2D" uid="uid://cyk2bu8kngos6" path="res://assets/images/tag/tag5.png" id="10_tnjnu"]
+[ext_resource type="Texture2D" uid="uid://cv2fhm42ycnw2" path="res://assets/images/tag/up.png" id="11_pk3eh"]
 [ext_resource type="Texture2D" uid="uid://ba75maxot166" path="res://assets/images/tag/tag7.png" id="12_8kjpi"]
 [ext_resource type="Texture2D" uid="uid://c455dhv43gi2o" path="res://assets/images/tag/tag3.png" id="12_eemcn"]
 [ext_resource type="Texture2D" uid="uid://cjqg33juqx7pj" path="res://assets/images/tag/tag2.png" id="13_njovb"]
 [ext_resource type="Texture2D" uid="uid://cxjd6nevwhykh" path="res://assets/images/tag/title.png" id="13_th6lv"]
 [ext_resource type="Texture2D" uid="uid://bh2m5h2cwwlsj" path="res://assets/images/tag/nicetag.png" id="14_yyjdi"]
+[ext_resource type="Texture2D" uid="uid://n08ykowo1tbi" path="res://assets/images/tag/employee.png" id="15_c3rv8"]
 [ext_resource type="Texture2D" uid="uid://cu2kcsfq0ci5s" path="res://assets/images/tag/eyetag.png" id="15_vmuob"]
+[ext_resource type="Texture2D" uid="uid://dgw8sssmfx3yo" path="res://assets/images/tag/chair.png" id="16_m5hut"]
 [ext_resource type="Texture2D" uid="uid://dl8aaiobf5ik" path="res://assets/images/tag/flan.png" id="18_00gdp"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_wu8kj"]
@@ -448,9 +451,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.80073, 35.513847, 198.8646
 [node name="Tag" type="Node3D" parent="." unique_id=373691583]
 
 [node name="Sprite3D6" type="Sprite3D" parent="Tag" unique_id=432010992]
-transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, 19.710918, 20.98075, 48.95858)
+transform = Transform3D(-1.3113416e-07, 0, -3, 0, 3, 0, 3, 0, -1.3113416e-07, 19.710918, 20.98075, 48.95858)
 flip_h = true
 texture = ExtResource("10_5xesp")
+
+[node name="Sprite3D19" type="Sprite3D" parent="Tag" unique_id=1136195171]
+transform = Transform3D(-1.3113416e-07, 0, -3, 0, 3, 0, 3, 0, -1.3113416e-07, 59.490982, 41.434334, 109.49954)
+texture = ExtResource("11_pk3eh")
 
 [node name="Sprite3D18" type="Sprite3D" parent="Tag" unique_id=1783910244]
 transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, 19.710918, 37.107998, 122.36258)
@@ -466,6 +473,16 @@ texture = ExtResource("10_a3wil")
 transform = Transform3D(-9.723923e-08, 3.4222175e-15, -2.2245746, -0.38612464, 2.1908078, 1.6878042e-08, 2.1908078, 0.38612464, -9.576325e-08, 7.700938, 30.798088, 202.1343)
 flip_h = true
 texture = ExtResource("12_8kjpi")
+
+[node name="Sprite3D20" type="Sprite3D" parent="Tag" unique_id=119968176]
+transform = Transform3D(-9.723923e-08, 3.4222175e-15, -2.2245746, -0.38612464, 2.1908078, 1.6878042e-08, 2.1908078, 0.38612464, -9.576325e-08, 4.485866, 30.974178, 163.43965)
+flip_h = true
+texture = ExtResource("15_c3rv8")
+
+[node name="Sprite3D21" type="Sprite3D" parent="Tag" unique_id=1005549670]
+transform = Transform3D(-1.4772317, -0.26035854, 2.2649371e-07, -0.26035854, 1.4772317, 1.1380632e-08, -2.2503116e-07, -2.8105159e-08, -1.5, 6.789997, 31.365587, 158.52516)
+flip_h = true
+texture = ExtResource("16_m5hut")
 
 [node name="Sprite3D" type="Sprite3D" parent="Tag" unique_id=1225692124]
 transform = Transform3D(-1.3113416e-07, 0, -3, 0, 3, 0, 3, 0, -1.3113416e-07, 108.95776, -6.5097947, -1.8199646)
