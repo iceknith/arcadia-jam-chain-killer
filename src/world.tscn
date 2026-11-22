@@ -42,6 +42,10 @@ edge_fade = 1.9866747
 [sub_resource type="SphereShape3D" id="SphereShape3D_njovb"]
 radius = 8.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_637yn"]
+atlas = ExtResource("15_vmuob")
+region = Rect2(33, 70.5, 48, 47)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_yyjdi"]
 atlas = ExtResource("15_vmuob")
 region = Rect2(90, 65.5, 50, 66)
@@ -338,9 +342,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.029, 36.73447, 64.29371)
 [node name="EyeEnemy4" parent="Enemy/Bridge" unique_id=1651938870 instance=ExtResource("7_jvefd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.029, 36.73447, 58.121624)
 
-[node name="EyeEnemy6" parent="Enemy/Bridge" unique_id=1201261583 instance=ExtResource("7_jvefd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.029, 36.73447, 123.13696)
-
 [node name="EyeEnemy7" parent="Enemy/Bridge" unique_id=1527760017 instance=ExtResource("7_jvefd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.029, 36.73447, 128.57089)
 
@@ -403,6 +404,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.80073, 35.513847, 198.8646
 transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, 19.710918, 20.98075, 48.95858)
 flip_h = true
 texture = ExtResource("10_5xesp")
+
+[node name="Sprite3D18" type="Sprite3D" parent="Tag" unique_id=1783910244]
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, 19.710918, 37.107998, 122.36258)
+flip_h = true
+texture = SubResource("AtlasTexture_637yn")
 
 [node name="Sprite3D7" type="Sprite3D" parent="Tag" unique_id=1543415763]
 transform = Transform3D(-1.3113416e-07, -1.2705494e-21, -3, 1.5000002, -2.5980759, -6.5567086e-08, -2.5980759, -1.5000002, 1.13565505e-07, -28.221497, 39.81133, 181.44858)

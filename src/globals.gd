@@ -40,16 +40,16 @@ func _is_S_score() -> bool:
 	return damage_taken < 10 && death <= 0 && time <= 180 && enemies_killed >= 20
 
 func _is_A_score() -> bool:
-	return damage_taken < 50 && death <= 1 && time <= 320 && enemies_killed >= 16
+	return damage_taken < 50 && death <= 1 && time <= 300 && enemies_killed >= 16
 
 func _is_B_score() -> bool:
-	return damage_taken < 200 && death <= 4 && time <= 480 && enemies_killed >= 13
+	return damage_taken < 200 && death <= 3 && time <= 480 && enemies_killed >= 10
 
 func _is_C_score() -> bool:
-	return damage_taken < 500 && death <= 10 && time <= 660 && enemies_killed >= 10
+	return damage_taken < 500 && death <= 7 && time <= 660 && enemies_killed >= 0
 
 func _is_D_score() -> bool:
-	return damage_taken < 1000 && death <= 15 && time <= 860 && enemies_killed >= 8
+	return damage_taken < 1000 && death <= 15 && time <= 860 && enemies_killed >= 0
 
 func _is_E_score() -> bool:
-	return damage_taken < 2000 && death <= 20 && time <= 1200 && enemies_killed >= 5
+	return damage_taken < 2000 && death <= 20 && time <= 1200 && enemies_killed >= 0

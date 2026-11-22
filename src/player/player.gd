@@ -100,6 +100,7 @@ func _physics_process(delta: float) -> void:
 	dash_handler()
 	grab_handler()
 	movement_handler(delta)
+	flan_handler()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -362,3 +363,19 @@ func is_velocity_overrided() -> bool:
 
 func get_chain_origin() -> Vector3:
 	return %GrabOrigin.global_position if is_grab_chain else %AttackOrigin.global_position
+
+func flan_handler() -> void:
+	if Input.is_action_just_pressed('flan'):
+		launch_flan()
+
+func launch_flan() -> void:
+
+	flan = flan_scene.instantiate()
+	get_parent().add_child(flan)
+	
+	#global_rotation = %Camera.global_rotation
+	flan.global_position = %Camera.global_position
+	
+	var flan_direction := Vector2.from_angle(-rotation.y - PI/2)
+	flan.linear_velocity = Vector3(flan_direction.x, rotation.z, flan_direction.y) * 10
+	flan.angular_velocity = Vector3(randf()*10, 1 - 2 *randf(),1 - 2 *randf())
