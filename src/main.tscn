@@ -3,6 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://bcu2djfujv2ao" path="res://src/world.tscn" id="1_eewff"]
 [ext_resource type="Script" uid="uid://bgfx2im2imhny" path="res://src/main.gd" id="1_gh0ne"]
 [ext_resource type="PackedScene" uid="uid://c3pnwt06tvi5r" path="res://src/gui/main_menu.tscn" id="3_5q4o7"]
+[ext_resource type="AudioStream" uid="uid://du8wu6jl6goal" path="res://assets/sound/Boss_Fight.mp3" id="4_fyndt"]
+[ext_resource type="AudioStream" uid="uid://g6s647s0ul5e" path="res://assets/sound/Ambiant.mp3" id="4_rlaii"]
+[ext_resource type="AudioStream" uid="uid://bjdnlns0rekli" path="res://assets/sound/Boss_Entrance.mp3" id="5_5mrjc"]
+[ext_resource type="AudioStream" uid="uid://cda0wox2iweer" path="res://assets/sound/Boss Dying.mp3" id="5_kmhfv"]
 
 [node name="Main" type="Node" unique_id=286117844]
 script = ExtResource("1_gh0ne")
@@ -15,7 +19,17 @@ layer = 10000
 [node name="MainMenu" parent="CanvasLayer" unique_id=991886152 instance=ExtResource("3_5q4o7")]
 
 [node name="BackgroundSound" type="AudioStreamPlayer" parent="." unique_id=1455569738]
+stream = ExtResource("4_rlaii")
+volume_db = 15.0
+autoplay = true
 
 [node name="BossEntrance" type="AudioStreamPlayer" parent="." unique_id=1363663280]
+stream = ExtResource("5_5mrjc")
+volume_db = 10.0
 
-[node name="BossEntrance2" type="AudioStreamPlayer" parent="." unique_id=2004225857]
+[node name="BossFight" type="AudioStreamPlayer" parent="." unique_id=2004225857]
+stream = ExtResource("4_fyndt")
+volume_db = 5.0
+
+[node name="BossDying" type="AudioStreamPlayer" parent="." unique_id=1534222424]
+stream = ExtResource("5_kmhfv")

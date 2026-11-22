@@ -16,10 +16,12 @@ func _ready():
 	$CanvasLayer/MainMenu/VBoxContainer/Play.pressed.connect(launch_game)
 	$CanvasLayer/MainMenu/VBoxContainer/HBoxContainer/Options.pressed.connect(toggle_settings)
 	$CanvasLayer/MainMenu/VBoxContainer/HBoxContainer/Exit.pressed.connect(get_tree().quit)
-	Globals.settingsToggle.connect(toggle_settings)
+	$BossEntrance.finished.connect($BossFight.play)
 	
-	Globals.restart.connect(get_tree().reload_current_scene)
+	Globals.settingsToggle.connect(toggle_settings)
+	Globals.restart.connect(func(): get_tree().reload_current_scene())
 	Globals.gameEnd.connect(end_game)
+	Globals.startBossFight.connect(start_boss_fight)
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed('esc'):
@@ -63,6 +65,13 @@ func launch_game():
 	tween.tween_callback($CanvasLayer/MainMenu.queue_free)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
+func start_boss_fight():
+	$BossEntrance.play()
+	
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD) 
+	tween.tween_property($BackgroundSound, 'volume_db', -100, 1)
+
 func end_game():
 	await get_tree().process_frame
 	world.process_mode = Node.PROCESS_MODE_DISABLED
@@ -75,3 +84,5 @@ func end_game():
 	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
 	tween.tween_property(end_scene, 'modulate', Color.WHITE, 1)
 	
+	$BossFight.stop()
+	$BossDying.play()

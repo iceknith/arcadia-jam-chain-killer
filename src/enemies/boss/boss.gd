@@ -101,7 +101,7 @@ func launch_bullets():
 			bullet.position = position
 			bullet.position.y = player.global_position.y + 0.5
 			
-			if bullet.position.y <= default_pos.y:
+			if bullet.position.y <= default_pos.y || !%ShieldCollisionShape.disabled:
 				bullet.position += bullet_boss_distance * bullet.direction
 			
 			get_parent().add_child(bullet)
