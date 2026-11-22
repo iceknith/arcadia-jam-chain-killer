@@ -53,6 +53,7 @@ uv1_scale = Vector3(2, 40, 2)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_k0vup")
+SPEED = 17.0
 DAMAGE = 2.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2145242275]
