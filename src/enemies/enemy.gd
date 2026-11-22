@@ -44,6 +44,7 @@ func damage(damage_delt:float):
 	blood.emitting = true
 
 	if health <= 0:
+		Globals.enemies_killed += 1
 		death_animation()
 	else:
 		damage_animation()

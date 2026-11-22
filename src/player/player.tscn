@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dtqp2c442ryqt" path="res://assets/sound/processed/walk.mp3" id="3_x42xx"]
 [ext_resource type="AudioStream" uid="uid://bebcpdmq1epec" path="res://assets/sound/processed/player_hurt.mp3" id="4_l271a"]
 [ext_resource type="AudioStream" uid="uid://70t64h66iclj" path="res://assets/sound/processed/pulling_chain.mp3" id="5_8ydov"]
+[ext_resource type="AudioStream" uid="uid://cn8q6r65oroe6" path="res://assets/sound/processed/respawn.mp3" id="6_8ydov"]
 [ext_resource type="AudioStream" uid="uid://bnk0wi1j86a4f" path="res://assets/sound/processed/chain_impact.mp3" id="7_cwolq"]
 [ext_resource type="Shader" uid="uid://de8e2n85quh52" path="res://src/player/player.gdshader" id="9_8ydov"]
 [ext_resource type="AudioStream" uid="uid://dl3u7ewf1ugel" path="res://assets/sound/processed/shooting_chain.mp3" id="9_l271a"]
@@ -200,6 +201,11 @@ volume_db = -5.0
 [node name="DamageSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1846262775]
 unique_name_in_owner = true
 stream = ExtResource("4_l271a")
+volume_db = 7.0
+
+[node name="RespawnSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=60394314]
+unique_name_in_owner = true
+stream = ExtResource("6_8ydov")
 volume_db = 7.0
 
 [node name="ChainPullSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1553008689]

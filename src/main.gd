@@ -17,6 +17,7 @@ func _ready():
 	$CanvasLayer/MainMenu/VBoxContainer/HBoxContainer/Options.pressed.connect(toggle_settings)
 	$CanvasLayer/MainMenu/VBoxContainer/HBoxContainer/Exit.pressed.connect(get_tree().quit)
 	Globals.settingsToggle.connect(toggle_settings)
+	
 	Globals.restart.connect(get_tree().reload_current_scene)
 	Globals.gameEnd.connect(end_game)
 
