@@ -54,9 +54,17 @@ func launch_game():
 	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
 	tween.tween_property($CanvasLayer/MainMenu, 'modulate', Color.TRANSPARENT, 0.3)
 	tween.tween_callback($CanvasLayer/MainMenu.queue_free)
-	tween.tween_callback(func (): Input.mouse_mode = Input.MOUSE_MODE_CAPTURED)
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func end_game():
-	world.queue_free()
-	$CanvasLayer.queue_free()
-	add_child(end_game_packed_scene.instantiate())
+	await get_tree().process_frame
+	world.process_mode = Node.PROCESS_MODE_DISABLED
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
+	var end_scene = end_game_packed_scene.instantiate()
+	end_scene.modulate = Color.TRANSPARENT
+	var tween = create_tween()
+	$CanvasLayer.add_child(end_scene)
+	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
+	tween.tween_property(end_scene, 'modulate', Color.WHITE, 1)
+	

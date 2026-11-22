@@ -69,6 +69,7 @@ var chain_goal_enemy:Enemy
 var chain_goal_pos:Vector3
 
 @onready var respawn_point:Vector3 = global_position
+@onready var respawn_rotation:float = rotation.y
 
 @onready var health:float = MAX_HEALTH
 
@@ -323,6 +324,7 @@ func damage(dealt_damage:float, source:Vector3 = Vector3.ZERO) -> void:
 func death_animation():
 	is_death_anim = true
 	global_position = respawn_point
+	rotation.y = respawn_rotation
 	health = MAX_HEALTH
 	%PlayerUi.on_respawn()
 	velocity = Vector3.ZERO

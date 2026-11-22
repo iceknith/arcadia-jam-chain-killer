@@ -45,6 +45,8 @@ var attack:String
 var pillar_count:int 
 var mob_count:int = 0
 
+var laser_beam:LaserBeam
+
 func _ready():
 	super()
 	$DetectionRange.body_entered.connect(_on_detection_range_entered)
@@ -81,7 +83,7 @@ func launch_attack():
 		launch_spawn_enemies()
 
 func launch_laser():
-	var laser_beam:LaserBeam = laser_beam_scene.instantiate()
+	laser_beam = laser_beam_scene.instantiate()
 	laser_beam.startPoint = $LaserSpawnPoint.global_position
 	laser_beam.player = player
 	laser_beam.duration = $AttackTimer.wait_time
@@ -140,6 +142,8 @@ func damage(damage_delt:float):
 	
 	if health <= 0:
 		Globals.gameEnd.emit()
+		if laser_beam && laser_beam.is_inside_tree():
+			laser_beam.queue_free()
 
 func launch_phase_2():
 	$AttackTimer.stop()

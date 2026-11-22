@@ -52,7 +52,7 @@ shape = SubResource("BoxShape3D_3vg6x")
 debug_color = Color(0.801869, 0.7604822, 0, 0.42000002)
 
 [node name="Marker3D" type="Marker3D" parent="Checkpoint/Checkpoint" unique_id=2065277484]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4508286, -1.4572363, -0.88201106)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.4508286, -1.4572363, -0.88201106)
 
 [node name="Checkpoint5" type="Area3D" parent="Checkpoint" unique_id=1725868750]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.863678, -11.309511, -58.795204)
@@ -65,7 +65,7 @@ shape = SubResource("BoxShape3D_3vg6x")
 debug_color = Color(0.801869, 0.7604822, 0, 0.42000002)
 
 [node name="Marker3D" type="Marker3D" parent="Checkpoint/Checkpoint5" unique_id=1332292889]
-transform = Transform3D(-0.043638498, -0.0344554, 0.99845296, 0.0013611794, 0.9994022, 0.034547593, -0.99904644, 0.0028666784, -0.043565504, -1.4508286, -1.1719527, -0.8820114)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.9999999, -1.4508286, -1.1719527, -0.8820114)
 
 [node name="Checkpoint6" type="Area3D" parent="Checkpoint" unique_id=1430091347]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.153957, 16.65036, -1.9263725)
@@ -78,7 +78,7 @@ shape = SubResource("BoxShape3D_3vg6x")
 debug_color = Color(0.801869, 0.7604822, 0, 0.42000002)
 
 [node name="Marker3D" type="Marker3D" parent="Checkpoint/Checkpoint6" unique_id=1959531332]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1679688, -3.1232376, -0.8820114)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2.1679688, -3.1232376, -0.8820114)
 
 [node name="Checkpoint7" type="Area3D" parent="Checkpoint" unique_id=1547371989]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.6292, 16.434097, 123.05791)
@@ -91,7 +91,7 @@ shape = SubResource("BoxShape3D_3vg6x")
 debug_color = Color(0.801869, 0.7604822, 0, 0.42000002)
 
 [node name="Marker3D" type="Marker3D" parent="Checkpoint/Checkpoint7" unique_id=615794272]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8332863, -2.1315994, -0.88201904)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.8332863, -2.1315994, -0.88201904)
 
 [node name="Checkpoint8" type="Area3D" parent="Checkpoint" unique_id=1925301347]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.647606, -182.42984, 153.7589)
@@ -104,7 +104,7 @@ shape = SubResource("BoxShape3D_3vg6x")
 debug_color = Color(0.801869, 0.7604822, 0, 0.42000002)
 
 [node name="Marker3D" type="Marker3D" parent="Checkpoint/Checkpoint8" unique_id=1927539102]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6404266, -140.14848, -1.7301788)
+transform = Transform3D(-0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710677, -2.6404266, -140.14848, -1.7301788)
 
 [node name="Checkpoint4" type="Area3D" parent="Checkpoint" unique_id=113055985]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.05565, -13.481856, -30.02961)
@@ -117,7 +117,7 @@ shape = SubResource("BoxShape3D_3vg6x")
 debug_color = Color(0.801869, 0.7604822, 0, 0.42000002)
 
 [node name="Marker3D" type="Marker3D" parent="Checkpoint/Checkpoint4" unique_id=1849722007]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6201553, -2.1951568, -1.3274491)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.5670433, -2.1951568, -1.3274491)
 
 [node name="Checkpoint3" type="Area3D" parent="Checkpoint" unique_id=357198477]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.48806, -13.6856785, -29.31836)
@@ -130,23 +130,10 @@ shape = SubResource("BoxShape3D_3vg6x")
 debug_color = Color(0.801869, 0.7604822, 0, 0.42000002)
 
 [node name="Marker3D" type="Marker3D" parent="Checkpoint/Checkpoint3" unique_id=1599093519]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.452736, -1.62853, -0.88201106)
-
-[node name="Checkpoint2" type="Area3D" parent="Checkpoint" unique_id=860422925]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 113.610245)
-script = ExtResource("1_t101k")
-metadata/_custom_type_script = "uid://dffkdykhkwkaf"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint/Checkpoint2" unique_id=324653748]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07556152, 0, -1.6381836)
-shape = SubResource("BoxShape3D_3vg6x")
-debug_color = Color(0.801869, 0.7604822, 0, 0.42000002)
-
-[node name="Marker3D" type="Marker3D" parent="Checkpoint/Checkpoint2" unique_id=1944440170]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12567806, 0.9425831, -2.0272865)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.452736, -1.62853, -0.88201106)
 
 [node name="Player" parent="." unique_id=256785396 instance=ExtResource("1_4ep41")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.21097, -9.592614, -1.9625123)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 121.21097, -9.592614, -1.9625123)
 
 [node name="BossSpawnMarkers" type="Node3D" parent="." unique_id=860179678]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100.83079, -306.88602, 254.57666)
@@ -164,18 +151,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.26010132, 0, -74.11302)
 
 [node name="Boss" parent="." unique_id=11309565 node_paths=PackedStringArray("pillar_spawn_locations") instance=ExtResource("3_36ipd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.021194, -309.63312, 217.0471)
-ATTACK_HEIGHT = 10.0
-ATTACK_TRANSITION_TIME = 5.0
 pillar_spawn_locations = [NodePath("../BossSpawnMarkers/Marker3D"), NodePath("../BossSpawnMarkers/Marker3D2"), NodePath("../BossSpawnMarkers/Marker3D3"), NodePath("../BossSpawnMarkers/Marker3D4")]
-bullets_wave_amount = 5
-bullet_boss_distance = 15.0
-enemies_boss_min_distance = 15.0
-player_min_distance = 10.0
-MOB_AMOUNT = 3
-MAX_MOB_AMOUNT = 6
-STUN_TIME = 1.0
-CONTACT_DAMAGE = 10.0
-DAMAGE_FLICKER_DURATION = 0.3
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1370491774]
 environment = SubResource("Environment_fmhij")
@@ -190,8 +166,8 @@ light_energy = 0.489
 [node name="KillZone" type="Node3D" parent="." unique_id=482265870]
 
 [node name="Killzone" type="FogVolume" parent="KillZone" unique_id=710291583]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.718132, -12.45705, 88.44975)
-size = Vector3(45, 25, 136)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.718132, -12.45705, 70.886765)
+size = Vector3(45, 25, 171.12598)
 material = SubResource("FogMaterial_wu8kj")
 script = ExtResource("3_0qwtu")
 metadata/_custom_type_script = "uid://c66w4lyiampg2"
@@ -239,8 +215,8 @@ script = ExtResource("3_0qwtu")
 metadata/_custom_type_script = "uid://c66w4lyiampg2"
 
 [node name="Killzone8" type="FogVolume" parent="KillZone" unique_id=1398391471]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.009182, 48.482025, 2.073143)
-size = Vector3(57.579918, 33.498035, 47.350845)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.009182, 57.14535, 2.073143)
+size = Vector3(57.579918, 16.171381, 47.350845)
 material = SubResource("FogMaterial_wu8kj")
 script = ExtResource("3_0qwtu")
 metadata/_custom_type_script = "uid://c66w4lyiampg2"

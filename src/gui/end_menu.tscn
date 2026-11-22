@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dt3b568myt4nl"]
 
 [ext_resource type="Script" uid="uid://dnq1yamwdalgn" path="res://src/gui/end_menu.gd" id="1_6n32t"]
-[ext_resource type="Texture2D" uid="uid://c0b28q380fayo" path="res://assets/images/map/concrete_test.png" id="1_w5yeh"]
 
 [sub_resource type="SystemFont" id="SystemFont_jy7xt"]
 font_names = PackedStringArray("Monospace")
@@ -78,12 +77,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_w5yeh")
 script = ExtResource("1_6n32t")
-
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1825555050]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("1_w5yeh")
 
 [node name="Title" type="Label" parent="." unique_id=98009235]
 layout_mode = 1
