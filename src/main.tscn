@@ -7,7 +7,7 @@
 [node name="Main" type="Node" unique_id=286117844]
 script = ExtResource("1_gh0ne")
 
-[node name="PlayerDebugScene" parent="." unique_id=1364974991 instance=ExtResource("1_eewff")]
+[node name="World" parent="." unique_id=1364974991 instance=ExtResource("1_eewff")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=696572145]
 layer = 10000

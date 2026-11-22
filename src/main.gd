@@ -9,7 +9,7 @@ var world:Node3D
 var is_in_world:bool = false
 
 func _ready():
-	world = $PlayerDebugScene
+	world = $World
 	world.process_mode = Node.PROCESS_MODE_DISABLED
 	
 	$CanvasLayer/MainMenu/VBoxContainer/Play.pressed.connect(launch_game)
