@@ -14,19 +14,20 @@ script = ExtResource("1_v32a3")
 damage_sound_player = NodePath("DamageStreamPlayer")
 MAX_HEALTH = 5.0
 sprite = NodePath("Sprite3D")
-DAMAGE_COLOR_2 = Color(0.6204995, 0, 0, 1)
+DAMAGE_COLOR_1 = Color(1, 0.7005133, 0.6643606, 1)
+DAMAGE_COLOR_2 = Color(1, 1, 1, 1)
 DAMAGE_FLICKER_COUNT = 1
+GRABBED_COLOR = Color(0.9999905, 0.30011427, 0.23637769, 1)
 metadata/_custom_type_script = "uid://cyly0r0q3b0st"
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=209947032]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 8.909071, 0)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 pixel_size = 0.05
 billboard = 2
 texture_filter = 0
 texture = ExtResource("3_v32a3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1989821314]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.8893957, 0)
 shape = SubResource("CapsuleShape3D_wu8kj")
 
 [node name="DamageStreamPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1735783395]
