@@ -43,6 +43,27 @@ density = 0.5
 albedo = Color(0, 0, 0, 1)
 edge_fade = 1.9866747
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xoxn7"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wu8kj"]
+material = SubResource("StandardMaterial3D_xoxn7")
+size = Vector2(45, 171)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wgoqa"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pk3eh"]
+material = SubResource("StandardMaterial3D_wgoqa")
+size = Vector2(99, 139)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tvnmn"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_c3rv8"]
+material = SubResource("StandardMaterial3D_tvnmn")
+size = Vector2(110, 99)
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_njovb"]
 radius = 8.0
 
@@ -166,20 +187,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026245117, 0.16952324, -0.2
 shape = SubResource("BoxShape3D_wu8kj")
 
 [node name="Player" parent="." unique_id=256785396 instance=ExtResource("1_4ep41")]
-transform = Transform3D(0.8983497, 0, -0.43928126, 0, 1, 0, 0.43928126, 0, 0.8983497, 121.21097, -9.592614, -1.9625123)
+transform = Transform3D(0.95220125, 0, -0.30547166, 0, 1, 0, 0.30547166, 0, 0.95220125, 120.50548, -9.592614, -1.9625123)
 
-[node name="BossSpawnMarkers" type="Node3D" parent="." unique_id=860179678]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100.83079, -306.88602, 254.57666)
+[node name="BossSpawnMarkers" type="Node3D" parent="." unique_id=1574317634]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100.831, -298.186, 254.577)
 
-[node name="Marker3D" type="Marker3D" parent="BossSpawnMarkers" unique_id=1238710573]
+[node name="Marker3D" type="Marker3D" parent="BossSpawnMarkers" unique_id=1174640090]
 
-[node name="Marker3D2" type="Marker3D" parent="BossSpawnMarkers" unique_id=219186188]
+[node name="Marker3D2" type="Marker3D" parent="BossSpawnMarkers" unique_id=1037027556]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.59329, 0, -0.8379822)
 
-[node name="Marker3D3" type="Marker3D" parent="BossSpawnMarkers" unique_id=931062638]
+[node name="Marker3D3" type="Marker3D" parent="BossSpawnMarkers" unique_id=39517778]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.59329, 0, -74.11302)
 
-[node name="Marker3D4" type="Marker3D" parent="BossSpawnMarkers" unique_id=955542377]
+[node name="Marker3D4" type="Marker3D" parent="BossSpawnMarkers" unique_id=1421934083]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.26010132, 0, -74.11302)
 
 [node name="Boss" parent="." unique_id=11309565 node_paths=PackedStringArray("pillar_spawn_locations") instance=ExtResource("3_36ipd")]
@@ -205,6 +226,9 @@ size = Vector3(45, 25, 171.12598)
 material = SubResource("FogMaterial_wu8kj")
 script = ExtResource("3_0qwtu")
 metadata/_custom_type_script = "uid://c66w4lyiampg2"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="KillZone/Killzone" unique_id=1715627056]
+mesh = SubResource("PlaneMesh_wu8kj")
 
 [node name="Killzone2" type="FogVolume" parent="KillZone" unique_id=1534634933]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.718132, 73.74182, 88.44975)
@@ -234,6 +258,9 @@ material = SubResource("FogMaterial_wu8kj")
 script = ExtResource("3_0qwtu")
 metadata/_custom_type_script = "uid://c66w4lyiampg2"
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="KillZone/Killzone4" unique_id=549739926]
+mesh = SubResource("PlaneMesh_pk3eh")
+
 [node name="Killzone11" type="FogVolume" parent="KillZone" unique_id=1144519787]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.747879, 20.960442, 188.77484)
 size = Vector3(63.883957, 12.558418, 66.00548)
@@ -247,6 +274,9 @@ size = Vector3(108.50603, 50.86, 101.067924)
 material = SubResource("FogMaterial_wu8kj")
 script = ExtResource("3_0qwtu")
 metadata/_custom_type_script = "uid://c66w4lyiampg2"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="KillZone/Killzone5" unique_id=1192065028]
+mesh = SubResource("PlaneMesh_c3rv8")
 
 [node name="Killzone8" type="FogVolume" parent="KillZone" unique_id=1398391471]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.009182, 57.14535, 2.073143)
@@ -275,6 +305,9 @@ size = Vector3(110.53923, 50.86, 99.05962)
 material = SubResource("FogMaterial_wu8kj")
 script = ExtResource("3_0qwtu")
 metadata/_custom_type_script = "uid://c66w4lyiampg2"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="KillZone/Killzone6" unique_id=2025188183]
+mesh = SubResource("PlaneMesh_c3rv8")
 
 [node name="Killzone7" type="FogVolume" parent="KillZone" unique_id=2012458449]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.919739, -207.50305, 179.56763)
