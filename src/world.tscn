@@ -161,7 +161,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.26010132, 0, -74.11302)
 
 [node name="Boss" parent="." unique_id=11309565 node_paths=PackedStringArray("pillar_spawn_locations") instance=ExtResource("3_36ipd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.021194, -309.63312, 217.0471)
+ATTACK_HEIGHT = 10.0
+ATTACK_TRANSITION_TIME = 5.0
 pillar_spawn_locations = [NodePath("../BossSpawnMarkers/Marker3D"), NodePath("../BossSpawnMarkers/Marker3D2"), NodePath("../BossSpawnMarkers/Marker3D3"), NodePath("../BossSpawnMarkers/Marker3D4")]
+bullets_wave_amount = 5
+bullet_boss_distance = 15.0
+enemies_boss_min_distance = 15.0
+player_min_distance = 10.0
+MOB_AMOUNT = 3
+MAX_MOB_AMOUNT = 6
+STUN_TIME = 1.0
+CONTACT_DAMAGE = 10.0
+DAMAGE_FLICKER_DURATION = 0.3
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1370491774]
 environment = SubResource("Environment_fmhij")

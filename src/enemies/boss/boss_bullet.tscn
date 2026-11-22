@@ -20,6 +20,7 @@ script = ExtResource("1_3wve3")
 speed = 15.0
 contact_damage_area = NodePath("Area3D")
 MAX_HEALTH = 0.1
+CONTACT_DAMAGE = 5.0
 sprite = NodePath("Sprite3D")
 DAMAGE_COLOR_1 = Color(1, 1, 1, 1)
 DAMAGE_COLOR_2 = Color(1, 1, 1, 1)

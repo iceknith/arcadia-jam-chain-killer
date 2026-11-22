@@ -41,6 +41,7 @@ ambiant_sound_player = NodePath("AmbiantSound")
 contact_damage_area = NodePath("Area3D")
 damage_sound_player = NodePath("DamageStreamPlayer")
 MAX_HEALTH = 4.0
+CONTACT_DAMAGE = 3.0
 sprite = NodePath("Sprite3D")
 metadata/_custom_type_script = "uid://m42myfffckyh"
 

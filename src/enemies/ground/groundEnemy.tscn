@@ -38,6 +38,7 @@ ambiant_sound_player = NodePath("AmbiantSound")
 contact_damage_area = NodePath("Area3D")
 damage_sound_player = NodePath("DamageStreamPlayer")
 MAX_HEALTH = 7.0
+CONTACT_DAMAGE = 4.0
 sprite = NodePath("Sprite3D")
 DAMAGE_COLOR_2 = Color(0.6204995, 0, 0, 1)
 DAMAGE_FLICKER_COUNT = 1

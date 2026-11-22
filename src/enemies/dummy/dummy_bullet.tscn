@@ -2,13 +2,11 @@
 
 [ext_resource type="Script" uid="uid://dk657urseds7y" path="res://src/enemies/bullet.gd" id="1_n7xwk"]
 [ext_resource type="AudioStream" uid="uid://8nep3vg42c4e" path="res://assets/sound/processed/enemy_hit.mp3" id="2_15r33"]
+[ext_resource type="Texture2D" uid="uid://bijslmcjtdvrs" path="res://assets/images/enemy/projectile.png" id="2_wgsit"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_xoxn7"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3vg6x"]
-width = 50
-height = 50
-noise = SubResource("FastNoiseLite_xoxn7")
+[sub_resource type="AtlasTexture" id="AtlasTexture_8r4yh"]
+atlas = ExtResource("2_wgsit")
+region = Rect2(71, 0, 53, 60.5)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lm31t"]
 radius = 0.3
@@ -24,6 +22,7 @@ speed = 10.0
 contact_damage_area = NodePath("Area3D")
 damage_sound_player = NodePath("DamageStreamPlayer")
 MAX_HEALTH = 0.1
+CONTACT_DAMAGE = 3.0
 sprite = NodePath("Sprite3D")
 DAMAGE_FLICKER_DURATION = 0.05
 metadata/_custom_type_script = "uid://dk657urseds7y"
@@ -31,7 +30,7 @@ metadata/_custom_type_script = "uid://dk657urseds7y"
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=126936257]
 billboard = 2
 texture_filter = 0
-texture = SubResource("NoiseTexture2D_3vg6x")
+texture = SubResource("AtlasTexture_8r4yh")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1564482448]
 collision_layer = 0

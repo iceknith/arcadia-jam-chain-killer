@@ -21,8 +21,11 @@ script = ExtResource("1_jd2j0")
 detection_range = NodePath("DetectionRange")
 shooting_sound_player = NodePath("ShootStreamPlayer")
 bullet_scene = ExtResource("2_qmeyt")
+SHOOTING_DURATION = 5.0
 contact_damage_area = NodePath("Area3D")
 damage_sound_player = NodePath("DamageStreamPlayer")
+MAX_HEALTH = 2.0
+CONTACT_DAMAGE = 4.0
 sprite = NodePath("Sprite3D")
 metadata/_custom_type_script = "uid://m42myfffckyh"
 
