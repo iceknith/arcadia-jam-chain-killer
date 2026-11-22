@@ -19,12 +19,12 @@ func animate() -> void:
 	
 	if Globals.damage_taken > 0:
 		tween.tween_property(self, 'damage_taken', Globals.damage_taken, animation_duration)
-	if Globals.damage_taken > 0:
-		tween.tween_property(self, 'enemies_killed', Globals.damage_taken, animation_duration)
-	if Globals.damage_taken > 0:
-		tween.tween_property(self, 'deaths', Globals.damage_taken, animation_duration)
-	if Globals.damage_taken > 0:
-		tween.tween_property(self, 'time', Globals.damage_taken, animation_duration)
+	if Globals.enemies_killed > 0:
+		tween.tween_property(self, 'enemies_killed', Globals.enemies_killed, animation_duration)
+	if Globals.death > 0:
+		tween.tween_property(self, 'deaths', Globals.death, animation_duration)
+	if Globals.time > 0:
+		tween.tween_property(self, 'time', Globals.time, animation_duration)
 	
 	tween.tween_property(%Score, 'modulate', Color.WHITE, animation_duration * 2)
 	tween.parallel().tween_property(%ButtonContainer, 'modulate', Color.WHITE, animation_duration * 2)

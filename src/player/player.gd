@@ -91,6 +91,8 @@ func _process(delta: float) -> void:
 	damage_animation_force = lerp(damage_animation_force, 0.0, delta * AIR_VOLUME_SPEED_SCALE)
 	(%DamageShader.material as ShaderMaterial).set_shader_parameter('force', damage_animation_force)
 	
+	Globals.time += delta
+	
 	attack_handler()
 
 func _physics_process(delta: float) -> void:
@@ -331,6 +333,7 @@ func death_animation():
 	rotation.y = respawn_rotation
 	health = MAX_HEALTH
 	%PlayerUi.on_respawn()
+	%RespawnSoundPlayer.play()
 	velocity = Vector3.ZERO
 	is_death_anim = false
 

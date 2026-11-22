@@ -13,3 +13,9 @@ script = ExtResource("1_gh0ne")
 layer = 10000
 
 [node name="MainMenu" parent="CanvasLayer" unique_id=991886152 instance=ExtResource("3_5q4o7")]
+
+[node name="BackgroundSound" type="AudioStreamPlayer" parent="." unique_id=1455569738]
+
+[node name="BossEntrance" type="AudioStreamPlayer" parent="." unique_id=1363663280]
+
+[node name="BossEntrance2" type="AudioStreamPlayer" parent="." unique_id=2004225857]
