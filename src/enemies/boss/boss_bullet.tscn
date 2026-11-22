@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://b1ogcokwm0j7e"]
 
 [ext_resource type="Script" uid="uid://dk657urseds7y" path="res://src/enemies/bullet.gd" id="1_3wve3"]
-[ext_resource type="Texture2D" uid="uid://c3ydekd1fm8an" path="res://assets/images/placeholder_circle.png" id="2_q0sth"]
+[ext_resource type="Texture2D" uid="uid://bijslmcjtdvrs" path="res://assets/images/enemy/projectile.png" id="2_q0sth"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05ac0"]
+atlas = ExtResource("2_q0sth")
+region = Rect2(11, 0, 53, 56.5)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lm31t"]
 radius = 1.5
@@ -24,10 +28,11 @@ GRABBED_COLOR = Color(0.735357, 0.7076778, 0.7076778, 1)
 metadata/_custom_type_script = "uid://dk657urseds7y"
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=126936257]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
-texture = ExtResource("2_q0sth")
+texture = SubResource("AtlasTexture_05ac0")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1564482448]
 collision_layer = 0

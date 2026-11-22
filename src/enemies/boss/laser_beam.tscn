@@ -17,6 +17,38 @@ top_radius = 1.0
 bottom_radius = 1.0
 height = 100.0
 
+[sub_resource type="Gradient" id="Gradient_rs7m5"]
+offsets = PackedFloat32Array(0, 0.44101125, 0.58146065, 0.66853935, 0.9101124)
+colors = PackedColorArray(0.70980394, 0.3254902, 0.34117648, 0.23529412, 0.7350738, 0.30909893, 0.3200044, 0.30188367, 0.23350647, 0.0035013752, 0.0020262985, 0.8509804, 0.98710096, 0.14562185, 0.108846515, 0.96600926, 1, 0.13725491, 0.09803922, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_rs7m5"]
+seed = 120
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1an32"]
+noise = SubResource("FastNoiseLite_rs7m5")
+color_ramp = SubResource("Gradient_rs7m5")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_h6wo3"]
+offset = Vector3(0, 250, 0)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rs7m5"]
+noise = SubResource("FastNoiseLite_h6wo3")
+color_ramp = SubResource("Gradient_rs7m5")
+seamless = true
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_eidq1"]
+frames = 2
+frame_0/texture = SubResource("NoiseTexture2D_1an32")
+frame_0/duration = 0.1
+frame_1/texture = SubResource("NoiseTexture2D_rs7m5")
+frame_1/duration = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wthfn"]
+transparency = 1
+albedo_texture = SubResource("AnimatedTexture_eidq1")
+uv1_scale = Vector3(2, 40, 2)
+
 [node name="LaserBeam" type="Area3D" unique_id=1978657225]
 collision_layer = 0
 collision_mask = 2
@@ -29,6 +61,7 @@ shape = SubResource("CylinderShape3D_wu8kj")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=989298102]
 transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, -50)
 mesh = SubResource("CylinderMesh_wu8kj")
+surface_material_override/0 = SubResource("StandardMaterial3D_wthfn")
 
 [node name="LazerStreamPlayer" type="AudioStreamPlayer3D" parent="." unique_id=275933187]
 stream = ExtResource("2_rs7m5")
