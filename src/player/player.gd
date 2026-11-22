@@ -309,6 +309,7 @@ func death_animation():
 	is_death_anim = true
 	global_position = respawn_point
 	health = MAX_HEALTH
+	%PlayerUi.on_respawn()
 	velocity = Vector3.ZERO
 	is_death_anim = false
 

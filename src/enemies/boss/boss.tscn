@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bn0edosvjbxoc" path="res://src/enemies/flying/flyingEnemy.tscn" id="3_05ac0"]
 [ext_resource type="Texture2D" uid="uid://cd5ds6my86q0y" path="res://assets/images/enemy/heart1.png" id="3_y0qss"]
 [ext_resource type="Texture2D" uid="uid://cdowt2r6lobs6" path="res://assets/images/enemy/heart2.png" id="4_2ayys"]
+[ext_resource type="PackedScene" uid="uid://fxiligjbunig" path="res://src/utils/hp_bar.tscn" id="4_05ac0"]
 [ext_resource type="Texture2D" uid="uid://dm260ogyxu50h" path="res://assets/images/enemy/boss_chain.png" id="5_2ayys"]
 [ext_resource type="AudioStream" uid="uid://8nep3vg42c4e" path="res://assets/sound/processed/enemy_hit.mp3" id="6_uhpws"]
 [ext_resource type="AudioStream" uid="uid://csg4k233alhre" path="res://assets/sound/processed/enemy_shooting.mp3" id="7_e3apt"]
@@ -60,6 +61,27 @@ DAMAGE_COLOR_2 = Color(1, 0.37799087, 0.31005043, 1)
 DAMAGE_FLICKER_COUNT = 1
 GRABBED_COLOR = Color(0.81325716, 0.81325793, 0.813257, 1)
 metadata/_custom_type_script = "uid://cyly0r0q3b0st"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=92618910]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=910812954]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HpBar" parent="CanvasLayer/Control" unique_id=623610714 instance=ExtResource("4_05ac0")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 92.0
+offset_top = 8.0
+offset_right = -102.0
+offset_bottom = -245.0
+fg_color = Color(1, 0, 0, 1)
+mg_color = Color(1, 1, 1, 1)
 
 [node name="Sprite3D" type="AnimatedSprite3D" parent="." unique_id=1102033929]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2177994, 0)

@@ -2,11 +2,6 @@
 
 [ext_resource type="Script" uid="uid://64i1d1f1hm27" path="res://src/utils/hp_bar.gd" id="1_ybxu1"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lm31t"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bgavf"]
-bg_color = Color(1, 1, 1, 1)
-
 [node name="HpBar" type="Control" unique_id=623610714]
 layout_mode = 3
 anchors_preset = 15
@@ -16,21 +11,26 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ybxu1")
 
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1986302862]
-layout_mode = 0
-offset_right = 184.0
-offset_bottom = 27.0
-max_value = 1.0
-step = 0.001
-show_percentage = false
+[node name="BG" type="ColorRect" parent="." unique_id=1441892839]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="ProgressBar2" type="ProgressBar" parent="." unique_id=734605179]
-layout_mode = 0
-offset_right = 161.0
-offset_bottom = 27.0
-theme_override_styles/background = SubResource("StyleBoxEmpty_lm31t")
-theme_override_styles/fill = SubResource("StyleBoxFlat_bgavf")
-max_value = 1.0
-step = 0.001
-value = 0.47
-show_percentage = false
+[node name="MG" type="ColorRect" parent="." unique_id=860349807]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FG" type="ColorRect" parent="." unique_id=1114636340]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

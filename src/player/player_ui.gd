@@ -54,6 +54,10 @@ func on_ungrab():
 
 func on_damage(new_helth_perc:float):
 	print('ANIMATION DAMAGE, DO THAT')
+	$HpBar.value = new_helth_perc
+
+func on_respawn():
+	$HpBar.value = 1
 
 func _draw() -> void:
 	# Draw 
