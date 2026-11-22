@@ -14,6 +14,8 @@ signal deleted
 @onready var plane_mesh:PlaneMesh = mesh
 @onready var mesh_material:StandardMaterial3D = plane_mesh.material
 
+@export var impact_particle:PackedScene = preload("res://src/particle/spark.tscn")
+
 var speed:float
 var head_pos:Vector3
 var has_reached_end:bool
@@ -40,6 +42,12 @@ func _process(delta: float) -> void:
 			head_pos = real_goal_pos
 			contact.emit()
 			$DeleteTimer.stop()
+			
+			#spark particle
+			var spark:CPUParticles3D = impact_particle.instantiate()
+			add_child(spark)
+			spark.global_position = head_pos
+			spark.emitting = true
 	else:
 		head_pos = real_goal_pos
 	

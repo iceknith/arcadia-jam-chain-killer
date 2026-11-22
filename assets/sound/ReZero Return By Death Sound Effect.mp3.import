@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://csaesyxnawu7g"
+path="res://.godot/imported/ReZero Return By Death Sound Effect.mp3-867fd90ccd401bf66d34e76f2e827c48.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/ReZero Return By Death Sound Effect.mp3"
+dest_files=["res://.godot/imported/ReZero Return By Death Sound Effect.mp3-867fd90ccd401bf66d34e76f2e827c48.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

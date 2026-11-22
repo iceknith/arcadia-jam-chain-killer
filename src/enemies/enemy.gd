@@ -14,8 +14,11 @@ extends CharacterBody3D
 @export var DAMAGE_FLICKER_COUNT:int = 2
 @export var DAMAGE_FLICKER_DURATION:float = 0.3
 @export var GRABBED_COLOR:Color = Color(0.2, 0, 0)
+var BLOOD_PARTICLE:PackedScene = preload("res://src/particle/blood.tscn") 
 
 @onready var health = MAX_HEALTH
+
+var blood:CPUParticles3D
 
 signal die
 
@@ -33,6 +36,13 @@ func damage(damage_delt:float):
 	if damage_sound_player:
 		damage_sound_player.play()
 	health -= damage_delt
+	
+	if !blood:
+		blood = BLOOD_PARTICLE.instantiate()
+		add_child(blood)
+	#blood.global_position = global_position
+	blood.emitting = true
+
 	if health <= 0:
 		death_animation()
 	else:
@@ -40,6 +50,7 @@ func damage(damage_delt:float):
 
 func damage_animation():
 	if sprite == null: return
+
 	
 	if damage_tween: damage_tween.kill()
 	damage_tween = create_tween()

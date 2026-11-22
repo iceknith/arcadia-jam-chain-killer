@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b0p3vb4687w4f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5e7k6"]
+shading_mode = 0
+albedo_color = Color(1, 0.83137256, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xlicn"]
+material = SubResource("StandardMaterial3D_5e7k6")
+top_radius = 0.01
+bottom_radius = 0.03
+height = 0.5
+radial_segments = 7
+
+[node name="CPUParticles3D" type="CPUParticles3D" unique_id=1538344989]
+amount = 4
+explosiveness = 1.0
+mesh = SubResource("CylinderMesh_xlicn")
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+angle_min = 30.0
+angle_max = 30.0
+anim_speed_min = 10.0
+anim_speed_max = 10.0

@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://c0k8qgnj8f11"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gcjci"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_uychf"]
+material = SubResource("StandardMaterial3D_gcjci")
+top_radius = 0.03
+bottom_radius = 0.02
+height = 0.15
+radial_segments = 7
+
+[sub_resource type="Gradient" id="Gradient_wclx6"]
+offsets = PackedFloat32Array(0, 0.9506173, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Blood" type="CPUParticles3D" unique_id=1538344989]
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("CylinderMesh_uychf")
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+spread = 90.0
+initial_velocity_min = 8.0
+initial_velocity_max = 10.0
+angular_velocity_min = 50.0
+angular_velocity_max = 50.0
+linear_accel_min = 1.0
+linear_accel_max = 1.0
+angle_min = 30.0
+angle_max = 360.0
+scale_amount_min = 0.75
+scale_amount_max = 1.5
+color_ramp = SubResource("Gradient_wclx6")
+hue_variation_min = 1.0
+hue_variation_max = 1.0
+anim_speed_min = 10.0
+anim_speed_max = 10.0
