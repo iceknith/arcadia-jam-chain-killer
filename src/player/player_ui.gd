@@ -58,7 +58,6 @@ func on_ungrab():
 		$SwooshPlayer.play()
 
 func on_damage(new_helth_perc:float):
-	print('ANIMATION DAMAGE, DO THAT')
 	$HpBar.value = new_helth_perc
 
 func on_heal(new_helth_perc:float):

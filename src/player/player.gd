@@ -20,6 +20,7 @@ extends CharacterBody3D
 @export var MIN_FOV:float = 75
 @export var MAX_FOV:float = 130
 @export var FOV_SPEED_MULT:float = 0.5
+@export var DAMAGE_ANIM_DURATION:float = 3
 
 @export_group('Grab')
 @export var GRAB_DISTANCE:float = 30
@@ -55,6 +56,8 @@ var knockback_speed:Vector2
 var direction: Vector3
 var movement_tween: Tween
 
+var damage_animation_force:float
+
 var is_dashing := false
 var is_death_anim := false
 
@@ -81,6 +84,9 @@ func _process(delta: float) -> void:
 	
 	%Camera.fov = min(lerp(%Camera.fov, MIN_FOV + velocity_speed * FOV_SPEED_MULT, 5 * delta), MAX_FOV)
 	%InAirSoundPlayer.volume_db = AIR_MIN_VOLUME + velocity_speed * AIR_VOLUME_SPEED_SCALE
+	
+	damage_animation_force = lerp(damage_animation_force, 0.0, delta * AIR_VOLUME_SPEED_SCALE)
+	(%DamageShader.material as ShaderMaterial).set_shader_parameter('force', damage_animation_force)
 	
 	attack_handler()
 
@@ -286,8 +292,10 @@ func movement_handler(delta:float) -> void :
 		
 		if is_on_floor() && direction.length_squared() >= 0.01 && !%WalkingSoundPlayer.playing:
 			%WalkingSoundPlayer.play(randf_range(0, %WalkingSoundPlayer.stream.get_length()))
+			%CameraAnimator.play("walking")
 		elif (!is_on_floor() || direction.length_squared() < 0.01) && %WalkingSoundPlayer.playing:
 			%WalkingSoundPlayer.stop()
+			%CameraAnimator.play("RESET")
 	
 	move_and_slide()
 
@@ -296,6 +304,7 @@ func movement_handler(delta:float) -> void :
 func damage(dealt_damage:float, source:Vector3 = Vector3.ZERO) -> void:
 	if !can_take_damage(): return
 	
+	damage_animation_force = 1.0
 	health -= dealt_damage
 	%DamageSoundPlayer.play()
 	

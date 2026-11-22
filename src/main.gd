@@ -1,6 +1,7 @@
 extends Node
 
 const settings_packed_scene := preload('res://src/gui/pause_menu.tscn')
+const end_game_packed_scene := preload('res://src/gui/end_menu.tscn')
 
 var settings_scene:Control
 var settings_scene_tween:Tween
@@ -17,6 +18,7 @@ func _ready():
 	$CanvasLayer/MainMenu/VBoxContainer/HBoxContainer/Exit.pressed.connect(get_tree().quit)
 	Globals.settingsToggle.connect(toggle_settings)
 	Globals.restart.connect(get_tree().reload_current_scene)
+	Globals.gameEnd.connect(end_game)
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed('esc'):
@@ -53,3 +55,8 @@ func launch_game():
 	tween.tween_property($CanvasLayer/MainMenu, 'modulate', Color.TRANSPARENT, 0.3)
 	tween.tween_callback($CanvasLayer/MainMenu.queue_free)
 	tween.tween_callback(func (): Input.mouse_mode = Input.MOUSE_MODE_CAPTURED)
+
+func end_game():
+	world.queue_free()
+	$CanvasLayer.queue_free()
+	add_child(end_game_packed_scene.instantiate())

@@ -2,6 +2,7 @@ extends Control
 
 @export var ANIM_DURATION:float = 0.5
 @export var BAR_MG_DEBOUNCE_TIME:float = 1.5
+@export var ANIM_ROTATION_AMOUNT:float = PI / 50
 
 @export var fg_color:Color
 @export var mg_color:Color
@@ -9,14 +10,22 @@ extends Control
 @export var value:float = 1:
 	set(new_value):
 		value = new_value
+		if !bar_mg_debounce_timer: return
+		
 		if bar_tween: bar_tween.kill()
 		bar_tween = create_tween()
 		bar_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 		bar_tween.tween_property(self, 'bar_value', new_value, ANIM_DURATION)
+		
+		var direction = 1 - randi_range(0,1) * 2
+		rotation = initial_rotation + direction * ANIM_ROTATION_AMOUNT
+		bar_tween.parallel().tween_property(self, 'rotation', initial_rotation, ANIM_DURATION * 0.5)
+		
 		bar_mg_debounce_timer.start()
 
-var bar_value:float = value
-var bar_mg_value:float = value
+@onready var initial_rotation:float = rotation
+@onready var bar_value:float = value
+@onready var bar_mg_value:float = value
 var bar_mg_debounce_timer:Timer
 
 var bar_tween:Tween
