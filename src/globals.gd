@@ -4,6 +4,8 @@ signal restart
 signal settingsToggle
 signal gameEnd
 signal sensitivity_change(new_value:float)
+signal startBossIntro
+signal startBossFight
 
 @export var sensitivity = 75 :
 	set(new_sensitivity):

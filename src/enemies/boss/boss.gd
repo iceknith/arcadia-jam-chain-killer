@@ -55,15 +55,18 @@ func _ready():
 	$CanvasLayer/Control.modulate = Color.TRANSPARENT
 	%Shield.transparency = true
 	%ShieldCollisionShape.disabled = true
+	Globals.startBossFight.connect(_start_boss_fight)
 
 func _on_detection_range_entered(body:Node3D):
 	if body as Player:
 		player = body
-		$IdleTimer.start()
 		
-		var intro_tween = create_tween()
-		intro_tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
-		intro_tween.tween_property($CanvasLayer/Control, 'modulate', Color.WHITE, 3)
+
+func _start_boss_fight():
+	launch_attack()
+	var intro_tween = create_tween()
+	intro_tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
+	intro_tween.tween_property($CanvasLayer/Control, 'modulate', Color.WHITE, 3)
 
 func launch_attack():
 	attack = attacks[phase].pick_random()
@@ -101,7 +104,7 @@ func launch_bullets():
 			bullet.position = position
 			bullet.position.y = player.global_position.y + 0.5
 			
-			if bullet.position.y <= default_pos.y:
+			if bullet.position.y <= default_pos.y || !%ShieldCollisionShape.disabled:
 				bullet.position += bullet_boss_distance * bullet.direction
 			
 			get_parent().add_child(bullet)

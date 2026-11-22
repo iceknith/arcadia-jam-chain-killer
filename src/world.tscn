@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://e5v1msdbivn8" path="res://src/player/player.tscn" id="1_4ep41"]
 [ext_resource type="Script" uid="uid://dffkdykhkwkaf" path="res://src/utils/checkpoint.gd" id="1_t101k"]
 [ext_resource type="PackedScene" uid="uid://ksw8n26des1g" path="res://src/map/map.tscn" id="2_i1s4b"]
+[ext_resource type="Script" uid="uid://xslytfnoxgyt" path="res://src/boss_spawn.gd" id="2_yyjdi"]
 [ext_resource type="Script" uid="uid://c66w4lyiampg2" path="res://src/utils/killzone.gd" id="3_0qwtu"]
 [ext_resource type="PackedScene" uid="uid://cqtqbc6y456v5" path="res://src/enemies/boss/boss.tscn" id="3_36ipd"]
 [ext_resource type="PackedScene" uid="uid://b7omdsafsep7p" path="res://src/enemies/ground/groundEnemy.tscn" id="6_usxdn"]
@@ -28,6 +29,9 @@ agent_max_climb = 0.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3vg6x"]
 size = Vector3(4.5546875, 3.6428223, 4.6967773)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wu8kj"]
+size = Vector3(5.737549, 2.6397095, 5.243103)
 
 [sub_resource type="Environment" id="Environment_fmhij"]
 volumetric_fog_enabled = true
@@ -150,6 +154,16 @@ debug_color = Color(0.801869, 0.7604822, 0, 0.42000002)
 
 [node name="Marker3D" type="Marker3D" parent="Checkpoint/Checkpoint3" unique_id=1599093519]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.452736, -1.62853, -0.88201106)
+
+[node name="Area3D" type="Area3D" parent="Checkpoint" unique_id=2027750457]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.569042, 15.444445, 152.16853)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_yyjdi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint/Area3D" unique_id=1169248744]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026245117, 0.16952324, -0.20370483)
+shape = SubResource("BoxShape3D_wu8kj")
 
 [node name="Player" parent="." unique_id=256785396 instance=ExtResource("1_4ep41")]
 transform = Transform3D(0.8983497, 0, -0.43928126, 0, 1, 0, 0.43928126, 0, 0.8983497, 121.21097, -9.592614, -1.9625123)
