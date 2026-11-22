@@ -27,7 +27,7 @@ size = Vector3(1.4855244, 1.2118347, 1.4942383)
 size = Vector3(1.0867157, 0.816864, 1.2402344)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wu8kj"]
-radius = 30.0
+radius = 17.0
 
 [node name="ChairEnemy" type="CharacterBody3D" unique_id=1510569336 node_paths=PackedStringArray("detection_range", "navigation_agent", "ambiant_sound_player", "contact_damage_area", "damage_sound_player", "sprite")]
 collision_layer = 4
@@ -36,8 +36,8 @@ detection_range = NodePath("DetectionRange")
 navigation_agent = NodePath("NavigationAgent3D")
 ambiant_sound_player = NodePath("AmbiantSound")
 contact_damage_area = NodePath("Area3D")
-MAX_HEALTH = 7.0
 damage_sound_player = NodePath("DamageStreamPlayer")
+MAX_HEALTH = 7.0
 sprite = NodePath("Sprite3D")
 DAMAGE_COLOR_2 = Color(0.6204995, 0, 0, 1)
 DAMAGE_FLICKER_COUNT = 1

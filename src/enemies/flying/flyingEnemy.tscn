@@ -31,7 +31,7 @@ size = Vector3(1.4855244, 1.2118347, 1.4942383)
 size = Vector3(1.0867157, 0.816864, 1.2402344)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wu8kj"]
-radius = 30.0
+radius = 15.0
 
 [node name="BatEnemy" type="CharacterBody3D" unique_id=1510569336 node_paths=PackedStringArray("detection_range", "ambiant_sound_player", "contact_damage_area", "damage_sound_player", "sprite")]
 collision_layer = 4
@@ -39,8 +39,8 @@ script = ExtResource("1_au5t6")
 detection_range = NodePath("DetectionRange")
 ambiant_sound_player = NodePath("AmbiantSound")
 contact_damage_area = NodePath("Area3D")
-MAX_HEALTH = 4.0
 damage_sound_player = NodePath("DamageStreamPlayer")
+MAX_HEALTH = 4.0
 sprite = NodePath("Sprite3D")
 metadata/_custom_type_script = "uid://m42myfffckyh"
 
