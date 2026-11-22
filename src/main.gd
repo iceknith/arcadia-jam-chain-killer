@@ -50,6 +50,12 @@ func toggle_settings():
 func launch_game():
 	world.process_mode = Node.PROCESS_MODE_INHERIT
 	is_in_world = true
+	
+	Globals.damage_taken = 0
+	Globals.death = 0
+	Globals.enemies_killed = 0
+	Globals.time = 0
+	
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
 	tween.tween_property($CanvasLayer/MainMenu, 'modulate', Color.TRANSPARENT, 0.3)
