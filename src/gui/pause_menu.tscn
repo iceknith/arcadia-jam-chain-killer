@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://dt8cb20sue4bh"]
+
+[ext_resource type="Script" uid="uid://b5ewm18rrnjdj" path="res://src/gui/pause_menu.gd" id="1_jhm3c"]
+
+[sub_resource type="SystemFont" id="SystemFont_jy7xt"]
+font_names = PackedStringArray("Monospace")
+font_weight = 999
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jy7xt"]
+bg_color = Color(0.11764706, 0.078431375, 0.078431375, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.39215687, 0.39215687, 1)
+corner_radius_top_left = 20
+corner_radius_bottom_right = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wu8kj"]
+bg_color = Color(0.078431375, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_bottom_right = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhm3c"]
+bg_color = Color(0.23529412, 0.11764706, 0.11764706, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0.39215687, 0.39215687, 1)
+corner_radius_top_left = 20
+corner_radius_bottom_right = 20
+
+[sub_resource type="SystemFont" id="SystemFont_jhm3c"]
+font_names = PackedStringArray("Monospace")
+font_weight = 999
+
+[sub_resource type="Theme" id="Theme_jy7xt"]
+Button/fonts/font = SubResource("SystemFont_jy7xt")
+Button/styles/hover = SubResource("StyleBoxFlat_jy7xt")
+Button/styles/normal = SubResource("StyleBoxFlat_wu8kj")
+Button/styles/pressed = SubResource("StyleBoxFlat_jhm3c")
+Label/fonts/font = SubResource("SystemFont_jhm3c")
+
+[sub_resource type="LabelSettings" id="LabelSettings_wu8kj"]
+font_size = 24
+
+[sub_resource type="FontVariation" id="FontVariation_x42xx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3vg6x"]
+font = SubResource("FontVariation_x42xx")
+font_size = 12
+
+[node name="PauseMenu" type="Control" unique_id=1377146102]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_jy7xt")
+script = ExtResource("1_jhm3c")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=37888966]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.25
+offset_top = -113.0
+offset_right = 135.25
+offset_bottom = 113.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.11764706, 0, 0, 0.5882353)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1955076299]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -119.0
+offset_top = -102.0
+offset_right = 119.0
+offset_bottom = 95.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=469296982]
+layout_mode = 2
+text = "Pause Menu"
+label_settings = SubResource("LabelSettings_wu8kj")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer" unique_id=143221416]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=609582620]
+layout_mode = 2
+text = "Sensitivity"
+label_settings = SubResource("LabelSettings_3vg6x")
+horizontal_alignment = 1
+
+[node name="SensitivitySlider" type="HSlider" parent="VBoxContainer" unique_id=2011841145]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 2.0
+max_value = 8.0
+step = 0.1
+value = 5.0
+
+[node name="Restart" type="Button" parent="." unique_id=2029159839]
+layout_mode = 0
+offset_left = 137.0
+offset_top = 214.0
+offset_right = 226.0
+offset_bottom = 237.0
+theme_override_font_sizes/font_size = 12
+text = "Restart"
+
+[node name="Exit" type="Button" parent="." unique_id=1188437311]
+layout_mode = 0
+offset_left = 269.0
+offset_top = 212.0
+offset_right = 358.0
+offset_bottom = 235.0
+theme_override_font_sizes/font_size = 12
+text = "Quit"
+
+[connection signal="value_changed" from="VBoxContainer/SensitivitySlider" to="." method="_on_sensitivity_changed"]
+[connection signal="button_down" from="Restart" to="." method="_on_restart"]
+[connection signal="button_down" from="Exit" to="." method="_on_exit"]
