@@ -21,10 +21,11 @@ animations = [{
 }]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bwiv2"]
-size = Vector3(1.4855244, 1.2118347, 1.4942383)
+size = Vector3(1.4855244, 2.3478904, 1.4942383)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_pxtsr"]
-size = Vector3(1.0867157, 0.816864, 1.2402344)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_njovb"]
+radius = 0.7861328
+height = 2.4821777
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wu8kj"]
 radius = 17.0
@@ -57,13 +58,13 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=618824604]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.468042, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48696792, 0)
 shape = SubResource("BoxShape3D_bwiv2")
 debug_color = Color(1, 0.60038817, 0.70000815, 0.42000002)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1989821314]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4547119, 0)
-shape = SubResource("BoxShape3D_pxtsr")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51924324, 0)
+shape = SubResource("CapsuleShape3D_njovb")
 
 [node name="DetectionRange" type="Area3D" parent="." unique_id=1877718845]
 collision_layer = 0
