@@ -69,9 +69,11 @@ var chain_goal_pos:Vector3
 @onready var health:float = MAX_HEALTH
 
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	%GraplingHookRayCast.target_position.z = -GRAB_DISTANCE
 	%ShootRayCast.target_position.z = -SHOOT_MAX_DISTANCE
+	
+	Globals.sensitivity = LOOK_SENSITIVITY
+	Globals.sensitivity_change.connect(func (new_sensi): LOOK_SENSITIVITY = new_sensi)
 
 func _process(delta: float) -> void:
 	var velocity_speed := velocity.length()
