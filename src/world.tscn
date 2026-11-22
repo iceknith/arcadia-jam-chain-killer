@@ -207,6 +207,13 @@ material = SubResource("FogMaterial_wu8kj")
 script = ExtResource("3_0qwtu")
 metadata/_custom_type_script = "uid://c66w4lyiampg2"
 
+[node name="Killzone12" type="FogVolume" parent="KillZone" unique_id=1250064378]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8078003, -682.4625, -1.0973816)
+size = Vector3(1448.5488, 85.99445, 1938.0586)
+material = SubResource("FogMaterial_wu8kj")
+script = ExtResource("3_0qwtu")
+metadata/_custom_type_script = "uid://c66w4lyiampg2"
+
 [node name="Killzone4" type="FogVolume" parent="KillZone" unique_id=1180674680]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.77458, -207.50305, 216.18509)
 size = Vector3(99.34542, 50.86, 139.08615)
@@ -308,79 +315,78 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.902664, 40.20761, -39.9577
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.443733, 28.612747, -39.957787)
 
 [node name="Bridge" type="Node3D" parent="Enemy" unique_id=1543210943]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.76107, 39.34764, 96.498695)
 
 [node name="ChairEnemy" parent="Enemy/Bridge" unique_id=292161608 instance=ExtResource("6_usxdn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.74261, -8.603714, -1.8442535)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.01846, 30.743927, 94.65444)
 
 [node name="ChairEnemy3" parent="Enemy/Bridge" unique_id=844895282 instance=ExtResource("6_usxdn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.752747, -8.603714, -5.878044)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.51382, 30.743927, 90.62065)
 
 [node name="ChairEnemy4" parent="Enemy/Bridge" unique_id=918967143 instance=ExtResource("6_usxdn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31747818, -8.969982, -33.560734)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.443592, 30.377659, 62.93796)
 
 [node name="ChairEnemy5" parent="Enemy/Bridge" unique_id=1711611057 instance=ExtResource("6_usxdn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.86379623, -9.307251, 25.119835)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.624866, 30.04039, 121.61853)
 
 [node name="EyeEnemy" parent="Enemy/Bridge" unique_id=368494336 instance=ExtResource("7_jvefd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.73207, -2.6131706, -21.315674)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.029, 36.73447, 75.18302)
 
 [node name="EyeEnemy2" parent="Enemy/Bridge" unique_id=2019210524 instance=ExtResource("7_jvefd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.73207, -2.6131706, -26.555794)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.029, 36.73447, 69.9429)
 
 [node name="EyeEnemy3" parent="Enemy/Bridge" unique_id=2018605291 instance=ExtResource("7_jvefd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.73207, -2.6131706, -32.204987)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.029, 36.73447, 64.29371)
 
 [node name="EyeEnemy4" parent="Enemy/Bridge" unique_id=1651938870 instance=ExtResource("7_jvefd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.73207, -2.6131706, -38.37707)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.029, 36.73447, 58.121624)
 
 [node name="EyeEnemy5" parent="Enemy/Bridge" unique_id=220288401 instance=ExtResource("7_jvefd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.73207, -2.6131706, -44.048077)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.029, 36.73447, 52.45062)
 
 [node name="EyeEnemy6" parent="Enemy/Bridge" unique_id=1201261583 instance=ExtResource("7_jvefd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.73207, -2.6131706, 37.312325)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.029, 36.73447, 133.81102)
 
 [node name="EyeEnemy7" parent="Enemy/Bridge" unique_id=1527760017 instance=ExtResource("7_jvefd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.73207, -2.6131706, 32.072197)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.029, 36.73447, 128.57089)
 
 [node name="EyeEnemy8" parent="Enemy/Bridge" unique_id=436115285 instance=ExtResource("7_jvefd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.73207, -2.6131706, 26.423012)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.029, 36.73447, 122.92171)
 
 [node name="EyeEnemy9" parent="Enemy/Bridge" unique_id=1410410997 instance=ExtResource("7_jvefd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.73207, -2.6131706, 20.25093)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.029, 36.73447, 116.749626)
 
 [node name="EyeEnemy10" parent="Enemy/Bridge" unique_id=1162148443 instance=ExtResource("7_jvefd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.73207, -2.6131706, 14.579926)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.029, 36.73447, 111.07862)
 
 [node name="EyeEnemy11" parent="Enemy/Bridge" unique_id=1683233872 instance=ExtResource("7_jvefd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.50175, -2.6131706, -21.30278)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.26282, 36.73447, 75.195915)
 
 [node name="EyeEnemy12" parent="Enemy/Bridge" unique_id=1473392359 instance=ExtResource("7_jvefd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.50175, -2.6131706, -26.5429)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.26282, 36.73447, 69.955795)
 
 [node name="EyeEnemy13" parent="Enemy/Bridge" unique_id=1774151120 instance=ExtResource("7_jvefd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.50175, -2.6131706, -32.192093)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.26282, 36.73447, 64.3066)
 
 [node name="EyeEnemy14" parent="Enemy/Bridge" unique_id=1226196179 instance=ExtResource("7_jvefd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.50175, -2.6131706, -38.364178)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.26282, 36.73447, 58.134518)
 
 [node name="EyeEnemy15" parent="Enemy/Bridge" unique_id=791705540 instance=ExtResource("7_jvefd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.50175, -2.6131706, -44.035183)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.26282, 36.73447, 52.463512)
 
 [node name="EyeEnemy16" parent="Enemy/Bridge" unique_id=1195525172 instance=ExtResource("7_jvefd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.50175, -2.6131706, 37.32522)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.26282, 36.73447, 133.82391)
 
 [node name="EyeEnemy17" parent="Enemy/Bridge" unique_id=630142477 instance=ExtResource("7_jvefd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.50175, -2.6131706, 32.08509)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.26282, 36.73447, 128.58379)
 
 [node name="EyeEnemy18" parent="Enemy/Bridge" unique_id=811317710 instance=ExtResource("7_jvefd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.50175, -2.6131706, 26.435905)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.26282, 36.73447, 122.9346)
 
 [node name="EyeEnemy19" parent="Enemy/Bridge" unique_id=213575869 instance=ExtResource("7_jvefd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.50175, -2.6131706, 20.263824)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.26282, 36.73447, 116.76252)
 
 [node name="EyeEnemy20" parent="Enemy/Bridge" unique_id=394718019 instance=ExtResource("7_jvefd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.50175, -2.6131706, 14.592819)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.26282, 36.73447, 111.091515)
 
 [node name="Labyrinth" type="Node3D" parent="Enemy" unique_id=1205770615]
 

@@ -29,6 +29,7 @@ extends CharacterBody3D
 @export var GRAB_DAMAGE:float = 3
 @export var MOB_GRAB_JUMP_FORCE:float = 8
 @export var MOB_GRAB_KNOCKBACK:float = 15
+@export var MOB_HEAL:int = 2
 
 @export_group('Attack')
 @export var SHOOT_DAMAGE:float = 2
@@ -189,6 +190,9 @@ func ungrab(force_release:bool):
 		current_speed = SPEED
 		if chain_goal_enemy != null:
 			chain_goal_enemy.damage(GRAB_DAMAGE)
+			
+			health = min(MAX_HEALTH, health + MOB_HEAL)
+			%PlayerUi.on_heal(health / MAX_HEALTH)
 			
 			var knockback = MOB_GRAB_KNOCKBACK * global_position.direction_to(chain_goal_enemy.global_position)
 			velocity.y = MOB_GRAB_JUMP_FORCE + max(0, velocity.y)

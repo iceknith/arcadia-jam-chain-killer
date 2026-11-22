@@ -74,6 +74,7 @@ collision_layer = 2
 script = ExtResource("1_4anbu")
 FOV_SPEED_MULT = 3.0
 GRAB_DISTANCE = 20.0
+MOB_HEAL = 1
 SHOOT_MAX_DISTANCE = 35.0
 MAX_HEALTH = 20.0
 DAMAGE_KNOCKBACK = 20.0
@@ -83,6 +84,7 @@ DAMAGE_KNOCKBACK = 20.0
 [node name="PlayerUi" parent="CanvasLayer" unique_id=1803843459 instance=ExtResource("2_rxibo")]
 unique_name_in_owner = true
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1584897913]
 shape = SubResource("CapsuleShape3D_wu8kj")
