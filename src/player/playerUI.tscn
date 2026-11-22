@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://6bfor2630kl3" path="res://assets/images/player/idle/idle_0004.png" id="12_niy2m"]
 [ext_resource type="Texture2D" uid="uid://cv06h8yr16vr1" path="res://assets/images/player/idle/idle_0005.png" id="13_kyxeo"]
 [ext_resource type="PackedScene" uid="uid://fxiligjbunig" path="res://src/utils/hp_bar.tscn" id="16_pdhsa"]
+[ext_resource type="Texture2D" uid="uid://cxnpcgdbvx0af" path="res://assets/images/healthbar.png" id="17_tehv1"]
+[ext_resource type="AudioStream" uid="uid://bjmrqmh52af1d" path="res://assets/sound/processed/swoosh.mp3" id="18_63mam"]
 [ext_resource type="Texture2D" uid="uid://cxtak1u6a8n7e" path="res://assets/images/player/attack/attack_0000.png" id="20_58u2h"]
 [ext_resource type="Texture2D" uid="uid://bfce688soyw4s" path="res://assets/images/player/attack/attack_0001.png" id="21_a7x7k"]
 
@@ -189,7 +191,12 @@ animations = [{
 "speed": 2.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu8kj"]
+atlas = ExtResource("17_tehv1")
+region = Rect2(0, 60.601433, 197.59723, 26.534721)
+
 [node name="PlayerUi" type="Control" unique_id=1803843459]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -208,14 +215,30 @@ libraries/ = SubResource("AnimationLibrary_jxpd4")
 position = Vector2(240.00002, 135)
 scale = Vector2(0.50553375, 0.5)
 sprite_frames = SubResource("SpriteFrames_wu8kj")
-animation = &"shoot"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="HpBar" parent="." unique_id=623610714 instance=ExtResource("16_pdhsa")]
 layout_mode = 1
-offset_left = 7.0
-offset_top = 5.0
-offset_right = -360.0
-offset_bottom = -257.0
+offset_left = 22.0
+offset_top = 243.0
+offset_right = -265.0
+offset_bottom = -22.0
+rotation = -1.5707964
 fg_color = Color(1, 0, 0, 1)
 mg_color = Color(1, 1, 1, 1)
+
+[node name="TextureRect" type="TextureRect" parent="HpBar" unique_id=223598106]
+layout_mode = 0
+offset_left = 240.00002
+offset_top = 19.000002
+offset_right = 437.0
+offset_bottom = 45.0
+rotation = 3.1415927
+scale = Vector2(1.3, 1.3)
+texture = SubResource("AtlasTexture_wu8kj")
+metadata/_edit_lock_ = true
+
+[node name="SwooshPlayer" type="AudioStreamPlayer" parent="." unique_id=1797310391]
+stream = ExtResource("18_63mam")
+volume_db = -12.0

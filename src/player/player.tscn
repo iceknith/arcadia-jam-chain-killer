@@ -159,6 +159,7 @@ autoplay = true
 [node name="WalkingSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1299566540]
 unique_name_in_owner = true
 stream = ExtResource("3_x42xx")
+volume_db = -5.0
 
 [node name="DamageSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1846262775]
 unique_name_in_owner = true
