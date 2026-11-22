@@ -1,0 +1,253 @@
+[gd_scene format=3 uid="uid://dt3b568myt4nl"]
+
+[ext_resource type="Script" uid="uid://dnq1yamwdalgn" path="res://src/gui/end_menu.gd" id="1_6n32t"]
+[ext_resource type="Texture2D" uid="uid://c0b28q380fayo" path="res://assets/images/map/concrete_test.png" id="1_w5yeh"]
+
+[sub_resource type="SystemFont" id="SystemFont_jy7xt"]
+font_names = PackedStringArray("Monospace")
+font_weight = 999
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jy7xt"]
+bg_color = Color(0.11764706, 0.078431375, 0.078431375, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.39215687, 0.39215687, 1)
+corner_radius_top_left = 20
+corner_radius_bottom_right = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wu8kj"]
+bg_color = Color(0.078431375, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_bottom_right = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhm3c"]
+bg_color = Color(0.23529412, 0.11764706, 0.11764706, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0.39215687, 0.39215687, 1)
+corner_radius_top_left = 20
+corner_radius_bottom_right = 20
+
+[sub_resource type="SystemFont" id="SystemFont_jhm3c"]
+font_names = PackedStringArray("Monospace")
+font_weight = 999
+subpixel_positioning = 0
+
+[sub_resource type="Theme" id="Theme_w5yeh"]
+Button/fonts/font = SubResource("SystemFont_jy7xt")
+Button/styles/hover = SubResource("StyleBoxFlat_jy7xt")
+Button/styles/normal = SubResource("StyleBoxFlat_wu8kj")
+Button/styles/pressed = SubResource("StyleBoxFlat_jhm3c")
+Label/fonts/font = SubResource("SystemFont_jhm3c")
+
+[sub_resource type="LabelSettings" id="LabelSettings_luk62"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_6n32t"]
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_6cwty"]
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_coi17"]
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_47fcd"]
+font_size = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3vg6x"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_w5yeh"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_lj24u"]
+font_size = 32
+
+[node name="EndMenu" type="Control" unique_id=1410725969]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_w5yeh")
+script = ExtResource("1_6n32t")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1825555050]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_w5yeh")
+
+[node name="Title" type="Label" parent="." unique_id=98009235]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -77.0
+offset_top = 4.0
+offset_right = 77.0
+offset_bottom = 49.0
+grow_horizontal = 2
+text = "Game End"
+label_settings = SubResource("LabelSettings_luk62")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1720118614]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -135.0
+offset_top = -215.0
+offset_right = 135.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=209431153]
+layout_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TitleScore" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=955252564]
+layout_mode = 2
+text = "Da	mage Taken"
+label_settings = SubResource("LabelSettings_6n32t")
+horizontal_alignment = 2
+metadata/_edit_lock_ = true
+
+[node name="DamageTaken" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=820397839]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "000"
+label_settings = SubResource("LabelSettings_6n32t")
+horizontal_alignment = 2
+metadata/_edit_lock_ = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=970338727]
+layout_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TitleScore2" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=686247917]
+layout_mode = 2
+text = "Enemies Killed"
+label_settings = SubResource("LabelSettings_6cwty")
+horizontal_alignment = 2
+metadata/_edit_lock_ = true
+
+[node name="EnemiesKilled" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=469495195]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+text = "000"
+label_settings = SubResource("LabelSettings_6cwty")
+horizontal_alignment = 2
+metadata/_edit_lock_ = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer" unique_id=608166339]
+layout_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TitleScore4" type="Label" parent="VBoxContainer/HBoxContainer3" unique_id=64478845]
+layout_mode = 2
+text = "Deaths"
+label_settings = SubResource("LabelSettings_coi17")
+horizontal_alignment = 2
+metadata/_edit_lock_ = true
+
+[node name="Deaths" type="Label" parent="VBoxContainer/HBoxContainer3" unique_id=24988514]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+text = "000"
+label_settings = SubResource("LabelSettings_coi17")
+horizontal_alignment = 2
+metadata/_edit_lock_ = true
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer" unique_id=835483780]
+layout_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TitleScore3" type="Label" parent="VBoxContainer/HBoxContainer4" unique_id=919920624]
+layout_mode = 2
+text = "Time"
+label_settings = SubResource("LabelSettings_47fcd")
+horizontal_alignment = 2
+metadata/_edit_lock_ = true
+
+[node name="Time" type="Label" parent="VBoxContainer/HBoxContainer4" unique_id=704760183]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+text = "000"
+label_settings = SubResource("LabelSettings_47fcd")
+horizontal_alignment = 2
+metadata/_edit_lock_ = true
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer" unique_id=1544895965]
+layout_mode = 2
+theme_override_constants/separation = 16
+theme_override_styles/separator = SubResource("StyleBoxFlat_3vg6x")
+metadata/_edit_lock_ = true
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer" unique_id=838348964]
+layout_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="TitleScore5" type="Label" parent="VBoxContainer/HBoxContainer5" unique_id=925270297]
+layout_mode = 2
+text = "Score"
+label_settings = SubResource("LabelSettings_w5yeh")
+horizontal_alignment = 2
+metadata/_edit_lock_ = true
+
+[node name="Score" type="Label" parent="VBoxContainer/HBoxContainer5" unique_id=71979584]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "F"
+label_settings = SubResource("LabelSettings_lj24u")
+horizontal_alignment = 2
+metadata/_edit_lock_ = true
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer" unique_id=159982435]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_constants/separation = 16
+theme_override_styles/separator = SubResource("StyleBoxFlat_3vg6x")
+metadata/_edit_lock_ = true
+
+[node name="ButtonContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=784625293]
+unique_name_in_owner = true
+layout_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="Restart" type="Button" parent="VBoxContainer/ButtonContainer" unique_id=201969167]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Restart"
+
+[node name="Exit" type="Button" parent="VBoxContainer/ButtonContainer" unique_id=297183644]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Exit
+"
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer" unique_id=360746754]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_constants/separation = 6
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="VBoxContainer/ButtonContainer/Restart" to="." method="_on_restart"]
+[connection signal="pressed" from="VBoxContainer/ButtonContainer/Exit" to="." method="_on_exit"]

@@ -1,4 +1,3 @@
-@tool
 extends Control
 class_name PlayerUI
 
@@ -14,12 +13,15 @@ var can_shoot:bool = false
 
 func _ready() -> void:
 	$AnimationPlayer.play_backwards("can_grab")
+	$SwooshPlayer.play()
 
 func on_shoot():
 	$AnimatedSprite2D.play("shoot")
+	$SwooshPlayer.stop()
 
 func on_shoot_end():
 	$AnimatedSprite2D.play("idle")
+	$SwooshPlayer.play()
 
 func on_can_grab():
 	if (can_grab != true && grab != true):
@@ -41,9 +43,11 @@ func on_grab():
 		can_grab = false
 		$AnimationPlayer.play("on_grab")
 		$AnimatedSprite2D.play("grab_launch")
+		$SwooshPlayer.stop()
 
 func on_grab_retract():
 	$AnimatedSprite2D.play("grab_retract")
+	$SwooshPlayer.stop()
 
 func on_ungrab():
 	if grab:
@@ -51,6 +55,7 @@ func on_ungrab():
 		can_grab = false
 		$AnimationPlayer.play("on_ungrab")
 		$AnimatedSprite2D.play("idle")
+		$SwooshPlayer.play()
 
 func on_damage(new_helth_perc:float):
 	print('ANIMATION DAMAGE, DO THAT')

@@ -137,6 +137,9 @@ func damage(damage_delt:float):
 	if phase == 0 && health <= MAX_HEALTH/2:
 		phase = 1
 		launch_phase_2()
+	
+	if health <= 0:
+		Globals.gameEnd.emit()
 
 func launch_phase_2():
 	$AttackTimer.stop()

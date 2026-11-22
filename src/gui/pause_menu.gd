@@ -3,6 +3,7 @@ extends Control
 func _ready() -> void:
 	%SensitivitySlider.value = Globals.sensitivity
 
+
 func _on_sensitivity_changed(value: float) -> void:
 	Globals.sensitivity = value
 
@@ -11,3 +12,6 @@ func _on_restart() -> void:
 
 func _on_exit() -> void:
 	get_tree().quit()
+
+func _on_continue() -> void:
+	Globals.settingsToggle.emit()

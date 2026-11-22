@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://c3pnwt06tvi5r"]
+
+[sub_resource type="SystemFont" id="SystemFont_jy7xt"]
+font_names = PackedStringArray("Monospace")
+font_weight = 999
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jy7xt"]
+bg_color = Color(0.11764706, 0.078431375, 0.078431375, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.39215687, 0.39215687, 1)
+corner_radius_top_left = 20
+corner_radius_bottom_right = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wu8kj"]
+bg_color = Color(0.078431375, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_bottom_right = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhm3c"]
+bg_color = Color(0.23529412, 0.11764706, 0.11764706, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0.39215687, 0.39215687, 1)
+corner_radius_top_left = 20
+corner_radius_bottom_right = 20
+
+[sub_resource type="SystemFont" id="SystemFont_jhm3c"]
+font_names = PackedStringArray("Monospace")
+font_weight = 999
+subpixel_positioning = 0
+
+[sub_resource type="Theme" id="Theme_uq34f"]
+Button/fonts/font = SubResource("SystemFont_jy7xt")
+Button/styles/hover = SubResource("StyleBoxFlat_jy7xt")
+Button/styles/normal = SubResource("StyleBoxFlat_wu8kj")
+Button/styles/pressed = SubResource("StyleBoxFlat_jhm3c")
+Label/fonts/font = SubResource("SystemFont_jhm3c")
+
+[node name="MainMenu" type="Control" unique_id=991886152]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_uq34f")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=663995950]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = 62.0
+offset_right = 74.0
+offset_bottom = 117.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="VBoxContainer" unique_id=2018572592]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 16
+text = "Play"
+metadata/_edit_lock_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=509139661]
+layout_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="Options" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=945999906]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 10
+text = "Options"
+
+[node name="Exit" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1418765203]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 10
+text = "Exit
+"

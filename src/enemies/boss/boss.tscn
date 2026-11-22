@@ -10,6 +10,20 @@
 [ext_resource type="AudioStream" uid="uid://8nep3vg42c4e" path="res://assets/sound/processed/enemy_hit.mp3" id="6_uhpws"]
 [ext_resource type="AudioStream" uid="uid://csg4k233alhre" path="res://assets/sound/processed/enemy_shooting.mp3" id="7_e3apt"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_05ac0"]
+load_path = "res://.godot/imported/healthbar.png-9fb3a09ec5f369f86ca259495479fae3.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrio4"]
+atlas = SubResource("CompressedTexture2D_05ac0")
+region = Rect2(-0.22052002, 96.36606, 200.13174, 48.45294)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nr62p"]
+load_path = "res://.godot/imported/healthbar.png-9fb3a09ec5f369f86ca259495479fae3.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_674wf"]
+atlas = SubResource("CompressedTexture2D_nr62p")
+region = Rect2(-0.48384094, 145.87234, 200.13174, 48.45294)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_637yn"]
 animations = [{
 "frames": [{
@@ -48,17 +62,28 @@ radius = 10.0
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_cumcl")
+ATTACK_HEIGHT = null
+ATTACK_TRANSITION_TIME = null
+bullets_wave_amount = null
 bullets_per_wave = 30
+bullet_boss_distance = null
+enemies_boss_min_distance = null
 enemies_boss_max_distance = 40.0
 enemies_boss_max_distance_y = 10.0
+player_min_distance = null
 enemies = Array[PackedScene]([ExtResource("2_nqxef"), ExtResource("3_05ac0"), ExtResource("3_05ac0"), ExtResource("3_05ac0")])
+MOB_AMOUNT = null
+MAX_MOB_AMOUNT = null
 contact_damage_area = NodePath("Area3D")
 damage_sound_player = NodePath("DamageStreamPlayer")
 MAX_HEALTH = 50.0
+STUN_TIME = null
+CONTACT_DAMAGE = null
 sprite = NodePath("Sprite3D")
 DAMAGE_COLOR_1 = Color(1, 0.59819686, 0.5539304, 1)
 DAMAGE_COLOR_2 = Color(1, 0.37799087, 0.31005043, 1)
 DAMAGE_FLICKER_COUNT = 1
+DAMAGE_FLICKER_DURATION = null
 GRABBED_COLOR = Color(0.81325716, 0.81325793, 0.813257, 1)
 metadata/_custom_type_script = "uid://cyly0r0q3b0st"
 
@@ -72,16 +97,38 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
 [node name="HpBar" parent="CanvasLayer/Control" unique_id=623610714 instance=ExtResource("4_05ac0")]
 unique_name_in_owner = true
 layout_mode = 1
-offset_left = 92.0
-offset_top = 8.0
-offset_right = -102.0
-offset_bottom = -245.0
+offset_left = 133.0
+offset_top = 33.0
+offset_right = -132.0
+offset_bottom = -229.0
 fg_color = Color(1, 0, 0, 1)
 mg_color = Color(1, 1, 1, 1)
+
+[node name="TextureRectFG" type="TextureRect" parent="CanvasLayer/Control/HpBar" unique_id=1233159073]
+layout_mode = 0
+offset_left = -12.0
+offset_top = -33.0
+offset_right = 188.0
+offset_bottom = 15.0
+scale = Vector2(1.2, 1.2)
+texture = SubResource("AtlasTexture_hrio4")
+metadata/_edit_lock_ = true
+
+[node name="TextureRectBG" type="TextureRect" parent="CanvasLayer/Control/HpBar" unique_id=1914072165]
+z_index = -1
+layout_mode = 0
+offset_left = -12.0
+offset_top = -32.0
+offset_right = 188.0
+offset_bottom = 16.0
+scale = Vector2(1.2, 1.2)
+texture = SubResource("AtlasTexture_674wf")
+metadata/_edit_lock_ = true
 
 [node name="Sprite3D" type="AnimatedSprite3D" parent="." unique_id=1102033929]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2177994, 0)
