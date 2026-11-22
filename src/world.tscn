@@ -9,9 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://7exa08nn64f3" path="res://src/enemies/turret/turret_enemy.tscn" id="7_jvefd"]
 [ext_resource type="PackedScene" uid="uid://bn0edosvjbxoc" path="res://src/enemies/flying/flyingEnemy.tscn" id="8_53egh"]
 [ext_resource type="Texture2D" uid="uid://5nkwvd7k31mr" path="res://assets/images/tag/tag1.png" id="9_8e6n3"]
-[ext_resource type="Texture2D" uid="uid://dwe8ivf7a0t1f" path="res://assets/images/tag/tag4.png" id="9_dotkg"]
-[ext_resource type="Texture2D" uid="uid://bup0a5iefowl4" path="res://assets/images/tag/tag5.png" id="10_tnjnu"]
-[ext_resource type="Texture2D" uid="uid://dwgmufvulvg3m" path="res://assets/images/tag/tag3.png" id="12_eemcn"]
+[ext_resource type="Texture2D" uid="uid://b5coyq271c6ph" path="res://assets/images/tag/tag4.png" id="9_dotkg"]
+[ext_resource type="Texture2D" uid="uid://cyk2bu8kngos6" path="res://assets/images/tag/tag5.png" id="10_tnjnu"]
+[ext_resource type="Texture2D" uid="uid://c455dhv43gi2o" path="res://assets/images/tag/tag3.png" id="12_eemcn"]
 [ext_resource type="Texture2D" uid="uid://cjqg33juqx7pj" path="res://assets/images/tag/tag2.png" id="13_njovb"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_wu8kj"]
